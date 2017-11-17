@@ -1,3 +1,5 @@
+package by.itacademy.task1;
+
 import static java.lang.Math.pow;
 import static java.lang.Math.sin;
 import static java.lang.Math.sqrt;
@@ -9,7 +11,7 @@ import static javax.swing.text.html.parser.DTDConstants.PI;
 public class Task1 {
     public static void main(String[] args) {
 
-        //Task1
+        //by.itacademy.task1.Task1
 
         String a = "Some text is here, lets check it blablabla";
         int b = a.length();

@@ -1,3 +1,5 @@
+package by.itacademy.task2;
+
 import java.util.Arrays;
 
 /**

@@ -1,3 +1,5 @@
+package by.itacademy.task2;
+
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
@@ -7,7 +9,7 @@ import java.util.Arrays;
 public class Task1 {
     public static void main(String[] args) {
 
-        //Task1
+        //by.itacademy.task2.Task1
 /*        1. Создайте массив с 10-ю переменными типа int. Используя оператор "for" найдите и выведите на экран наименьшее и наибольшее значение в массиве.
         min value =  "значение которое у вас получилось".
         max value =  "значение которое у вас получилось".
