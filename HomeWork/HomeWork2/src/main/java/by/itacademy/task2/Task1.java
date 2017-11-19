@@ -17,15 +17,15 @@ public class Task1 {
 
 */
         int array [] = new int [10];
-        array[0] = 7;
+        array[0] = 234;
         array[1] = 8;
-        array[2] = 9;
+        array[2] = 233;
         array[3] = 4;
         array[4] = 11;
         array[5] = 12;
-        array[6] = 13;
+        array[6] = 150;
         array[7] = 21;
-        array[8] = 15;
+        array[8] = 143;
         array[9] = 16;
 
 

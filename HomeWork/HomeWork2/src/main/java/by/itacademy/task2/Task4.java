@@ -20,8 +20,8 @@ public class Task4 {
         num = scanner.nextInt();
 
         int num1 = num % 10;
-        int num2 = num /10 % 10;
-        int num3 = num /100 % 10;
+        int num2 = num / 10 % 10;
+        int num3 = num / 100 % 10;
 
 
         if (num1 > num2 && num2 > num3){

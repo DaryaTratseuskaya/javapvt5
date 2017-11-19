@@ -1,7 +1,8 @@
-package by.itacademy.task2;
+package by.itacademy.task3;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  * Created by daryatratseuskaya on 11/14/17
@@ -9,59 +10,76 @@ import java.util.Arrays;
 public class Task1 {
     public static void main(String[] args) {
 
-        //by.itacademy.task2.Task1
-/*        1. Создайте массив с 10-ю переменными типа int. Используя оператор "for" найдите и выведите на экран наименьшее и наибольшее значение в массиве.
-        min value =  "значение которое у вас получилось".
-        max value =  "значение которое у вас получилось".
-        Далее замените наименьшее значение на 0, а наибольшее значение на 99 и выведите получившийся массив на экран в виде: [23, 0, 34, 99, 43534].
+        //by.itacademy.task3.Task1
+/*       1. Создайте массив с 10-ю переменными типа int.
+Значения необходимо вводить с клавиатуры в отдельном методе.
+Затем выведите все значения на экран также в отдельном методе в виде:
+"значение" | "значение 2" | "значение 3" |  и тд. -
+Далее отсортируйте массив по возрастанию способами из статьи или любыми другими алгоритмами.
+Результат вывести на экран:
+"значение" | "значение 2" | "значение 3" |  и тд.
+Далее найдите в массиве все четные числа и выведите их на экран:
+"значение" | "значение 2" | "значение 3" |  и тд.
+
+В итоге у вас должна получиться программа как минимум с 3 методами:
+1- для ввода данных с клавиатуры
+2 - для сортировки
+3 - для вывода
+
+Вывод значений массива на экран должен быть сделан в отдельном методе,
+этот метод будет использоваться для вывода значений массива до сортировки и после сортировки.
+
+Сортировку нужно сделать 3-мя различными способами (на ваш выбор). На следующем занятии необходимо уметь пояснить, как работает тот или иной тип сортировки, плюсы и минусы каждой из них.
 
 */
-        int array [] = new int [10];
-        array[0] = 7;
-        array[1] = 8;
-        array[2] = 9;
-        array[3] = 4;
-        array[4] = 11;
-        array[5] = 12;
-        array[6] = 13;
-        array[7] = 21;
-        array[8] = 15;
-        array[9] = 16;
+        int[] arr = new int[4];
 
-
-        int min = array[0];
-        int imin = 0;
-
-        for (int i = 0; i < array.length; i ++) {
-            if ( min > array[i] ) {
-                    min = array[i];
-                    imin = i;
-            }
-        }
-        array[imin] = 0;
-
-        System.out.println("min value = " + min);
-
-
-        int max = array[0];
-        int jmax = 0;
-        for (int j =0;  j < array.length ; j ++){
-            if ( max < array[j]) {
-                    max = array[j];
-                    jmax = j;
-            }
-        }
-        array[jmax] = 99;
-
-        System.out.println("max value = " + max);
-
-
-          System.out.println(Arrays.toString(array));
-
-
+        generateArray(arr);
+        printArray(arr);
+        sortArrayBubble(arr);
+        printArray(arr);
 
     }
+
+        public static void generateArray (int[] anArray){
+
+            Scanner input = new Scanner(System.in);
+
+            for (int i = 0; i < anArray.length; i++) {
+
+            System.out.println("Enter element # " + (i + 1) + ":");
+            anArray[i] = input.nextInt();
+
+            }
+        }
+
+        public static void printArray(int[] anArray){
+
+            for (int i = 0; i < anArray.length; i++) {
+                if (i > 0) {
+                    System.out.print(" | ");
+                }
+                System.out.print(anArray[i]);
+            }
+        }
+
+        public static void sortArrayBubble(int[] anArray){
+
+            for (int i = anArray.length-1; i > 0; i--){
+
+                for (int j =0 ; j < i; j++){
+                    if (anArray[j] > anArray[j + 1]){
+                        int tmp = anArray[j];
+                        anArray[j] = anArray[j + 1];
+                        anArray[j + 1] = tmp;
+                    }
+                }
+            }
+        }
+
 }
+
+
 
 
 
