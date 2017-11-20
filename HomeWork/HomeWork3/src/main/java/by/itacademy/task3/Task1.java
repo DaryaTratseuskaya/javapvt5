@@ -106,16 +106,25 @@ public class Task1 {
 
     public static int[] findEvenElements(int[] anArray) {
 
-        for (int i = 0; i < anArray.length; i++) {
+//        for (int i = 0; i < anArray.length; i++) {
+//            for (int j = 0; j < anArray.length; j++) {
+//                if (anArray[i] % 2 != 0) {
+//                 //   System.out.println("i = " + i);
+//                    anArray = removeElement(anArray, i);
+//
+//                }
+//            }
+        int i = 0;
+        do {
             if (anArray[i] % 2 != 0) {
-
-                removeElement(anArray, i);
                 anArray = removeElement(anArray, i);
-
+            } else {
+                i += 1;
             }
-        }
-        return anArray;
+        }   while (i < anArray.length) ;
+            return anArray;
     }
+
 
     public static int[] removeElement(int[] original, int element) {
         int[] n = new int[original.length - 1];
@@ -129,25 +138,17 @@ public class Task1 {
     }
 
     public static void selectionSort(int[] anArray){
-    /*По очереди будем просматривать все подмножества
-      элементов массива (0 - последний, 1-последний,
-      2-последний,...)*/
         for (int i = 0; i < anArray.length; i++) {
-        /*Предполагаем, что первый элемент (в каждом
-           подмножестве элементов) является минимальным */
             int min = anArray[i];
             int min_i = i;
-        /*В оставшейся части подмножества ищем элемент,
-           который меньше предположенного минимума*/
+
             for (int j = i+1; j < anArray.length; j++) {
-                //Если находим, запоминаем его индекс
+
                 if (anArray[j] < min) {
                     min = anArray[j];
                     min_i = j;
                 }
             }
-        /*Если нашелся элемент, меньший, чем на текущей позиции,
-          меняем их местами*/
             if (i != min_i) {
                 int tmp = anArray[i];
                 anArray[i] = anArray[min_i];
