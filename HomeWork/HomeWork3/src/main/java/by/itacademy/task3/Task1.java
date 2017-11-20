@@ -3,6 +3,7 @@ package by.itacademy.task3;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by daryatratseuskaya on 11/14/17
@@ -32,52 +33,97 @@ public class Task1 {
 Сортировку нужно сделать 3-мя различными способами (на ваш выбор). На следующем занятии необходимо уметь пояснить, как работает тот или иной тип сортировки, плюсы и минусы каждой из них.
 
 */
-        int[] arr = new int[4];
+
+        int[] arr = new int[10];
+        String noteForBubble = " - Bubble sort";
+        String noteForOriginalArr = " - Generated array";
+        String noteForEven = " - Even values";
+        String noteForQuickSort = " - QuickSort java.util";
+
+
+        int[] n = new int[arr.length];
 
         generateArray(arr);
-        printArray(arr);
+        printArray(arr, noteForOriginalArr);
+
         sortArrayBubble(arr);
-        printArray(arr);
+        printArray(arr, noteForBubble);
+
+        n = findEvenElements(arr);
+        printArray(n, noteForEven);
+
+        sortArrayQuickSort(arr);
+        printArray(arr, noteForQuickSort);
+
+
 
     }
 
-        public static void generateArray (int[] anArray){
+    public static void generateArray(int[] anArray) {
 
-            Scanner input = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
 
-            for (int i = 0; i < anArray.length; i++) {
+        for (int i = 0; i < anArray.length; i++) {
 
             System.out.println("Enter element # " + (i + 1) + ":");
             anArray[i] = input.nextInt();
 
-            }
         }
+    }
 
-        public static void printArray(int[] anArray){
+    public static void printArray(int[] anArray, String note) {
 
-            for (int i = 0; i < anArray.length; i++) {
-                if (i > 0) {
-                    System.out.print(" | ");
+        for (int i = 0; i < anArray.length; i++) {
+            if (i > 0) {
+                System.out.print(" | ");
+            }
+            System.out.print(anArray[i]);
+        }
+        System.out.println(note);
+        System.out.println();
+
+    }
+
+    public static void sortArrayBubble(int[] anArray) {
+
+        for (int i = anArray.length - 1; i > 0; i--) {
+
+            for (int j = 0; j < i; j++) {
+                if (anArray[j] > anArray[j + 1]) {
+                    int tmp = anArray[j];
+                    anArray[j] = anArray[j + 1];
+                    anArray[j + 1] = tmp;
                 }
-                System.out.print(anArray[i]);
             }
         }
+    }
 
-        public static void sortArrayBubble(int[] anArray){
+    public static int[] findEvenElements(int[] anArray) {
 
-            for (int i = anArray.length-1; i > 0; i--){
+        for (int i = 0; i < anArray.length; i++) {
+            if (anArray[i] % 2 != 0) {
 
-                for (int j =0 ; j < i; j++){
-                    if (anArray[j] > anArray[j + 1]){
-                        int tmp = anArray[j];
-                        anArray[j] = anArray[j + 1];
-                        anArray[j + 1] = tmp;
-                    }
-                }
+                removeElement(anArray, i);
+                anArray = removeElement(anArray, i);
+
             }
         }
+        return anArray;
+    }
+
+    public static int[] removeElement(int[] original, int element) {
+        int[] n = new int[original.length - 1];
+        System.arraycopy(original, 0, n, 0, element);
+        System.arraycopy(original, element + 1, n, element, original.length - element - 1);
+        return n;
+    }
+
+    public static void sortArrayQuickSort(int[] anArray) {
+        Arrays.sort(anArray);
+    }
 
 }
+
 
 
 
