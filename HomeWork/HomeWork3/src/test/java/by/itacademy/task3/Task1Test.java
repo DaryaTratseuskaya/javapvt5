@@ -37,30 +37,18 @@ public class Task1Test {
         int[] arrExpected = {4, 6, 8, 0, 4};
 
         int[] arrActual = Task1.findEvenElements(arrTest);
-        assertTrue(isArrayEqualToNew(arrExpected, arrActual));
+        assertTrue(isArrayEqualTo(arrExpected, arrActual));
 
     }
 
-    private boolean isArrayEqualToNew(int[] arr1, int[] arr2) {
-        if (arr1.length != arr2.length) {
-            return false;
-        }
 
-        for (int i = 0; i < arr1.length; i++) {
-            if (arr1[i] != arr2[i]) {
-                return false;
-            }
-        }
-
-        return true;
-    }
     @Test
     public void removeElement3() throws Exception {
         int[] arrTest = {0, 1, 4, 3, 5, 6, 8, 9, 0, 4};
         int[] arrExpected = {0, 4, 6, 8, 0, 4};
 
         int[] arrActual = Task1.findEvenElements(arrTest);
-        assertTrue(isArrayEqualToNew(arrExpected, arrActual));
+        assertTrue(isArrayEqualTo(arrExpected, arrActual));
 
     }
 

@@ -106,14 +106,6 @@ public class Task1 {
 
     public static int[] findEvenElements(int[] anArray) {
 
-//        for (int i = 0; i < anArray.length; i++) {
-//            for (int j = 0; j < anArray.length; j++) {
-//                if (anArray[i] % 2 != 0) {
-//                 //   System.out.println("i = " + i);
-//                    anArray = removeElement(anArray, i);
-//
-//                }
-//            }
         int i = 0;
         do {
             if (anArray[i] % 2 != 0) {
