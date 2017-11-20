@@ -35,13 +35,13 @@ public class Task1 {
 */
 
         int[] arr = new int[10];
+        int[] n = new int[arr.length];
+
         String noteForBubble = " - Bubble sort";
         String noteForOriginalArr = " - Generated array";
         String noteForEven = " - Even values";
         String noteForQuickSort = " - QuickSort java.util";
-
-
-        int[] n = new int[arr.length];
+        String noteForSelectionSort = " - Selection Sort";
 
         generateArray(arr);
         printArray(arr, noteForOriginalArr);
@@ -55,6 +55,8 @@ public class Task1 {
         sortArrayQuickSort(arr);
         printArray(arr, noteForQuickSort);
 
+        selectionSort(arr);
+        printArray(arr,noteForSelectionSort);
 
 
     }
@@ -70,7 +72,11 @@ public class Task1 {
 
         }
     }
-
+    /**
+     * Method to print array
+     * @param anArray - array that is coming to method on entry
+     * @param note - text note for the method of sort, printed values, etc.
+     */
     public static void printArray(int[] anArray, String note) {
 
         for (int i = 0; i < anArray.length; i++) {
@@ -122,6 +128,33 @@ public class Task1 {
         Arrays.sort(anArray);
     }
 
+    public static void selectionSort(int[] anArray){
+    /*По очереди будем просматривать все подмножества
+      элементов массива (0 - последний, 1-последний,
+      2-последний,...)*/
+        for (int i = 0; i < anArray.length; i++) {
+        /*Предполагаем, что первый элемент (в каждом
+           подмножестве элементов) является минимальным */
+            int min = anArray[i];
+            int min_i = i;
+        /*В оставшейся части подмножества ищем элемент,
+           который меньше предположенного минимума*/
+            for (int j = i+1; j < anArray.length; j++) {
+                //Если находим, запоминаем его индекс
+                if (anArray[j] < min) {
+                    min = anArray[j];
+                    min_i = j;
+                }
+            }
+        /*Если нашелся элемент, меньший, чем на текущей позиции,
+          меняем их местами*/
+            if (i != min_i) {
+                int tmp = anArray[i];
+                anArray[i] = anArray[min_i];
+                anArray[min_i] = tmp;
+            }
+        }
+    }
 }
 
 
