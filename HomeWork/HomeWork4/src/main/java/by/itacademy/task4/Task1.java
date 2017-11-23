@@ -48,6 +48,10 @@ public class Task1 {
         arr[i].setLastName(input.next());
 
         System.out.println("Возраст пациента: ");
+              while (!input.hasNextInt()) {
+                  System.out.println("Проверьте правильность ввода и введите целое число: ");
+                  input.next(); // this is important!
+              }
         arr[i].setAge(input.nextInt());
 
         System.out.println("Диагноз пациента: ");
