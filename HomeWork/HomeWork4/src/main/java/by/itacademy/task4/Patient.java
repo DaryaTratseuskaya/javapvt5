@@ -7,6 +7,7 @@ public class Patient {
 
     private String firstName;
     private String lastName;
+    private String secondName;
     private int age;
     private String diagnosis;
     private boolean isOnFile;
@@ -17,6 +18,14 @@ public class Patient {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getSecondName() {
+        return secondName;
+    }
+
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
     }
 
     public void setAge(int age) {

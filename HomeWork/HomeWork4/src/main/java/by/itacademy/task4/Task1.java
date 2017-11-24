@@ -30,7 +30,6 @@ public class Task1 {
 
         Scanner input = new Scanner(System.in);
 
-
           for (int i = 0; i < arr.length; i++){
 
               if (i > 0 && i < 2) {
@@ -44,13 +43,16 @@ public class Task1 {
         System.out.println("Имя пациента: ");
         arr[i].setFirstName(input.next());
 
+        System.out.println("Отчество пациента: ");
+        arr[i].setSecondName(input.next());
+
         System.out.println("Фамилия пациента: ");
         arr[i].setLastName(input.next());
 
-        System.out.println("Возраст пациента: ");
+              System.out.println("Возраст пациента: ");
               while (!input.hasNextInt()) {
                   System.out.println("Проверьте правильность ввода и введите целое число: ");
-                  input.next(); // this is important!
+                  input.next();
               }
         arr[i].setAge(input.nextInt());
 
@@ -69,7 +71,7 @@ public class Task1 {
     public static void printPatients(Patient[] arr){
 
             for (int i = 0; i < arr.length; i++) {
-                System.out.println("Пациент " + dm + arr[i].getFirstName() + " " + arr[i].getLastName() + dm + "  -  Возраст = " + dm + arr[i].getAge() + dm);
+                System.out.println("Пациент " + dm + arr[i].getFirstName() + " " + arr[i].getSecondName() + " " + arr[i].getLastName() + dm + "  -  Возраст = " + dm + arr[i].getAge() + dm);
                 System.out.println();
             }
     }
@@ -81,7 +83,6 @@ public class Task1 {
 
         boolean found = false;
         do{
-
         System.out.println("Нажмите 1 для поиска по имени, нажмите 2 для поиска по возрасту:");
         inputValue = input.nextInt();
         boolean matchFound = false;
@@ -90,7 +91,7 @@ public class Task1 {
             String name = input.next();
             for (int i = 0; i < arr.length; i++) {
                 if (arr[i].getFirstName().equals(name)) {
-                    String output = arr[i].getFirstName() + " " + arr[i].getLastName() + " , " + arr[i].getAge() + " - " + arr[i].getDiagnosis();
+                    String output = arr[i].getFirstName() + " " + arr[i].getSecondName() + " " + arr[i].getLastName() + " , " + arr[i].getAge() + " - " + arr[i].getDiagnosis();
                     printSearchResults(output);
                     matchFound = true;
                     found = true;
@@ -104,7 +105,7 @@ public class Task1 {
             int ageSearch = input.nextInt();
             for (int i = 0; i < arr.length; i++) {
                 if (arr[i].getAge() == ageSearch) {
-                    String output = arr[i].getFirstName() + " " + arr[i].getLastName() + " , " + arr[i].getAge() + " - " + arr[i].getDiagnosis();
+                    String output = arr[i].getFirstName() + " " + arr[i].getSecondName() + " " + arr[i].getLastName() + " , " + arr[i].getAge() + " - " + arr[i].getDiagnosis();
                     printSearchResults(output);
                     matchFound = true;
                     found = true;
@@ -114,12 +115,11 @@ public class Task1 {
                 System.out.println("Пациента такого возраста не найдено");
             }
         }
-
-    }while(!found);
+    } while(!found);
 
     }
 
-    public static void printSearchResults(String string){
+    public static void printSearchResults(String string) {
         System.out.println(string);
     }
 }
