@@ -16,7 +16,7 @@ public class DevicesMain {
     Notebook notebook = new Notebook();
     notebook.setProducer("Asus");
 
-    printInfo(notebook); // обращается к методу класса Devices, потому что унаследован от Devices
+    printInfo(notebook); // обращается к методу класса Devices, потому что унаследован от Devices и метод не переопределен
 
         SmartWatch smartWatch = new SmartWatch("Fitness", true, "Plastic");
 
