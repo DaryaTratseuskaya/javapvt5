@@ -36,7 +36,6 @@ public class Task4 {
                 return false;
             }
         }
-
         return true;
     }
 

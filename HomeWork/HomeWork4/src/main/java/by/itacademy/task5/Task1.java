@@ -1,7 +1,5 @@
-package by.itacademy.task4;
+package by.itacademy.task5;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 /**
