@@ -13,23 +13,33 @@ public class Task4 {
 //        Написать программу, определяющую, образуют ли цифры некоторого числа
 // строго возрастающую последовательность. Например: 123 – образуют, 212 – не образуют.
 
-        Scanner scanner = new Scanner(System.in);
-
-        int num;
-        System.out.println("Enter your number: ");
-        num = scanner.nextInt();
-
-        int num1 = num % 10;
-        int num2 = num / 10 % 10;
-        int num3 = num / 100 % 10;
 
 
-        if (num1 > num2 && num2 > num3){
-            System.out.println("true");
-        } else
-            System.out.println("false");
+       Scanner input = new Scanner(System.in);
+                String num = input.next();
 
-        scanner.close();
+                checkIncrease(num);
+                System.out.println("Number " + num + " contains only increasing digits ? - " + checkIncrease(num));
+
+
 
     }
+    public static boolean checkIncrease(String num){
+
+        if (num != null && num.length()>0){
+            if (num.length() == 1){
+                return true;
+            }
+        }
+        for (int i = 0; i < num.length() - 2; i ++){
+            if (num.charAt(i) >= num.charAt(i+1)){
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+
 }
+
