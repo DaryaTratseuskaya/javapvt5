@@ -1,4 +1,4 @@
-package by.itacademy.task5;
+package by.itacademy.task5.Task1;
 
 /**
  * Created by daryatratseuskaya on 11/27/17

@@ -1,9 +1,11 @@
-package by.itacademy.task5;
+package by.itacademy.task5.Task1;
+
+import by.itacademy.task5.Task1.Devices;
 
 /**
  * Created by daryatratseuskaya on 11/27/17
  */
-public class SmartPhone extends Devices{
+public class SmartPhone extends Devices {
 
     private String screenTechnology;
     private int flashMemory;
