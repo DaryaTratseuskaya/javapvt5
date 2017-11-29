@@ -12,32 +12,28 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Denomination denomination = new Denomination(0, 0, 0);
-
         System.out.println("Enter $sum: ");
         double orgAmount;
         orgAmount = input.nextDouble();
 
-        int hundreds;
-        int fifties, twenties;
-        hundreds = (int) orgAmount / 100;
-        orgAmount = orgAmount % 100;
-        int nw = denomination.getHundreds() + hundreds;
-        System.out.println("Current number of hundreds: " + nw);
 
-
-        fifties = (int) orgAmount / 50;
-        orgAmount = orgAmount % 50;
-        int nw2 = denomination.getFifties() + fifties;
-        System.out.println("Current number of fifties: " + nw2);
-
-
-        twenties = (int) orgAmount / 20;
-        orgAmount = orgAmount % 20;
-        int nw3 = denomination.getTwenties() + twenties;
-        System.out.println("Current number of twenties: " + nw3);
-
+        Manager manager = new Manager();
+        manager.addCash(orgAmount);
     }
+
+
+/*
+Методы снятия денег:
+При снятии денег функция должна распечатывать, каким количеством купюр, какого номинала выдается сумма.
+ */
+
+//    public static int takeCash(double sum){
+//
+//        Denomination denomination = new Denomination(10, 10, 10);
+//
+//
+//        return 1;
+//    }
 
 }
 
