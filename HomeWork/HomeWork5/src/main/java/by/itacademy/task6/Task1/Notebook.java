@@ -1,6 +1,4 @@
-package by.itacademy.task5.Task1;
-
-import by.itacademy.task5.Task1.Devices;
+package by.itacademy.task6.Task1;
 
 /**
  * Created by daryatratseuskaya on 11/27/17

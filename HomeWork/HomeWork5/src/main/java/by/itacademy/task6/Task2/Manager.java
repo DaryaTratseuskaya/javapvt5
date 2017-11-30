@@ -1,4 +1,4 @@
-package by.itacademy.task5.Task2;
+package by.itacademy.task6.Task2;
 
 /**
  * Created by daryatratseuskaya on 11/28/17
@@ -36,7 +36,7 @@ public class Manager {
         return success;
     }
 
-    public static void takeCash(double amount){
+    public int takeCash(double amount){
 
         Denomination denomination = new Denomination(10, 10, 10);
         int hundreds;
@@ -49,19 +49,21 @@ public class Manager {
 
         fifties = (int) amount / 50;
         amount = amount % 50;
-        int nw2 = denomination.getFifties() - fifties;
+         nw = denomination.getFifties() - fifties;
         System.out.println("Quantity of 50: " + fifties);
 //        System.out.println("Current number of fifties: " + nw2);
 
         twenties = (int) amount / 20;
         amount = amount % 20;
-        int nw3 = denomination.getTwenties() - twenties;
+         nw = denomination.getTwenties() - twenties;
         System.out.println("Quantity of 20: " + twenties);
 //        System.out.println("Current number of twenties: " + nw3);
 
+        return nw;
+
+
 
     }
-
 
 
 }

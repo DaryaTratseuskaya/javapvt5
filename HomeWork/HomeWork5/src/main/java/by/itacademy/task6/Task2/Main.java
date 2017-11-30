@@ -1,4 +1,4 @@
-package by.itacademy.task5.Task2;
+package by.itacademy.task6.Task2;
 
 import java.util.Scanner;
 
@@ -26,13 +26,8 @@ public class Main {
         takeMoney = input.nextDouble();
         manager.takeCash(takeMoney);
 
+
     }
-
-
-/*
-Методы снятия денег:
-При снятии денег функция должна распечатывать, каким количеством купюр, какого номинала выдается сумма.
- */
 
 
 
