@@ -3,7 +3,7 @@ package by.itacademy.task6.Task1;
 /**
  * Created by daryatratseuskaya on 11/30/17
  */
-public interface ATMProducer {
+public interface BankNameInterface {
 
-    String getATMProducer();
+    String getBankName();
 }

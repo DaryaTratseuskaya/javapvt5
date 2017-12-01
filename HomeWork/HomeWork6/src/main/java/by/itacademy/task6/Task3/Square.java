@@ -12,6 +12,7 @@ public class Square extends Shape {
     }
 
     public double getSqr() {
+
         return sideC * sideC;
     }
 }

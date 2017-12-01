@@ -3,7 +3,7 @@ package by.itacademy.task6.Task1;
 /**
  * Created by daryatratseuskaya on 11/27/17
  */
-public class Denomination {
+public class DenominationData {
 
 
     private int hundreds;
@@ -34,7 +34,7 @@ public class Denomination {
         this.twenties = twenties;
     }
 
-    public Denomination(int hundreds, int fifties, int twenties) {
+    public DenominationData(int hundreds, int fifties, int twenties) {
         this.hundreds = hundreds;
         this.fifties = fifties;
         this.twenties = twenties;
