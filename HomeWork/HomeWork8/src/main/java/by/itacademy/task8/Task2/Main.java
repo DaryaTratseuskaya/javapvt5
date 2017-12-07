@@ -1,8 +1,8 @@
-package by.itacademy.task8.Task1;
+package by.itacademy.task8.Task2;
 
-import by.itacademy.task8.Task1.Calculator;
-
+import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.regex.Matcher;
 
 /**
  * Created by daryatratseuskaya on 12/7/17
@@ -11,23 +11,32 @@ public class Main {
    public final static Scanner input = new Scanner(System.in);
 
 
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws UnexpectedUserInput {
+
+        ZeroException zeroException = new ZeroException();
+        zeroException.setErrorCode(9000);
+        InputException inputException = new InputException();
+        inputException.setErrorText("AAAAAAAAAAAAAAAAAAAA");
 
         screenMenu();
         int selector = 0;
 
         do{
             selector = input.nextInt();
-            boolean success = false;
 
+            boolean success = false;
                 switch (selector) {
                     case (1): {
                         while (!success) {
                             try {
-                                System.out.println("Enter arguments for summing: ");
+                                System.out.println("Enter arguments for summing. Numbers should be from 1 to 9 : ");
                                 Calculator.sum(input.nextInt(), input.nextInt());
                                 success = true;
-                            } catch (Exception e) {
+                            } catch (InputException e) {
+                                System.out.println("Numbers should be from 1 to 9: " + inputException.getErrorText() + " " + e.toString());
+                            }
+                            catch (InputMismatchException e) {
                                 input.next();
                                 System.out.println("Invalid entry: " + e.toString() + " Enter Integer");
                             }
@@ -69,7 +78,10 @@ public class Main {
                                 System.out.println("Enter arguments for divide: ");
                                 Calculator.divide(input.nextDouble(), input.nextDouble());
                                 success = true;
-                            } catch (Exception e) {
+                            } catch (ZeroException e){
+                                System.out.println("Forbidden to divide on zero. Error code " + zeroException.getErrorCode()+ " " + e.toString());
+                            }
+                            catch (Exception e){
                                 input.next();
                                 System.out.println("Invalid entry: " + e.toString() + " Enter Integer");
                             }
@@ -83,7 +95,7 @@ public class Main {
 
     }
 
-    public static boolean screenMenu() {
+    public static boolean screenMenu() throws UnexpectedUserInput{
 
         System.out.println("Select action you want perform: ");
         System.out.println ("1 - Sum");
@@ -94,4 +106,20 @@ public class Main {
 
         return true;
     }
+
+//    public static int readFromConsole()  {
+//        int selector = 0;
+//        selector = input.nextInt();
+//        try {
+//
+//
+//            if (!input.hasNextInt()) {
+//                throw new UnexpectedUserInput();
+//            }
+//        } catch (UnexpectedUserInput ex) {
+//            System.out.println("Invalid Entry! Enter Integer! ");
+//        }
+//
+//        return selector;
+//    }
 }

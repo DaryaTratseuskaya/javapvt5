@@ -26,45 +26,33 @@ public class Calculator {
 
     public static  int sum(int a, int b){
         int sumN = 0;
-        try {
             sumN = a + b;
             System.out.println("Result of sum is: " + a + " + " + b + " = " + sumN);
-        }catch (RuntimeException e){
-            System.out.println("RuntimeException " + e.toString());
-        }
         return sumN;
     }
 
     public static long subtraction(long a, long b){
         long subN = 0;
-        try{
+
             subN = Math.subtractExact(a,b);
             System.out.println("Result of subtraction is: " + a + " - " + b + " = " + subN);
-        }catch (RuntimeException e){
-            System.out.println("RuntimeException " + e.toString());
-        }
         return subN;
         }
 
     public static int multiply(int a, int b){
         int mult = 0;
-        try{
+
             mult = a * b;
             System.out.println("Result of multiply is: " + a + " * " + b + " = " + mult);
-        }catch (RuntimeException e){
-            System.out.println("RuntimeException " + e.toString());
-        }
         return mult;
     }
 
     public static double divide(double a, double b){
         double div = 0;
-        try{
+
             div = a / b;
             System.out.println("Result of divide is: " + a + " / " + b + " = " + div);
-        }catch (RuntimeException e){
-            System.out.println("RuntimeException " + e.toString());
-        }
+
         return div;
     }
 
