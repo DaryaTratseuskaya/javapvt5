@@ -24,13 +24,13 @@ public class Calculator {
     }
 
 
-    public static double sum(double a, double b){
-        double sumN = 0;
+    public static  int sum(int a, int b){
+        int sumN = 0;
         try {
             sumN = a + b;
             System.out.println("Result of sum is: " + a + " + " + b + " = " + sumN);
-        }catch (ArithmeticException e){
-            System.out.println("ArithmeticException " + e.toString());
+        }catch (RuntimeException e){
+            System.out.println("RuntimeException " + e.toString());
         }
         return sumN;
     }
@@ -40,19 +40,19 @@ public class Calculator {
         try{
             subN = Math.subtractExact(a,b);
             System.out.println("Result of subtraction is: " + a + " - " + b + " = " + subN);
-        }catch (ArithmeticException e){
-            System.out.println("ArithmeticException " + e.toString());
+        }catch (RuntimeException e){
+            System.out.println("RuntimeException " + e.toString());
         }
         return subN;
         }
 
-    public static double multiply(double a, double b){
-        double mult = 0;
+    public static int multiply(int a, int b){
+        int mult = 0;
         try{
             mult = a * b;
-            System.out.println("Result of subtraction is: " + a + " * " + b + " = " + mult);
-        }catch (ArithmeticException e){
-            System.out.println("ArithmeticException " + e.toString());
+            System.out.println("Result of multiply is: " + a + " * " + b + " = " + mult);
+        }catch (RuntimeException e){
+            System.out.println("RuntimeException " + e.toString());
         }
         return mult;
     }
@@ -61,9 +61,9 @@ public class Calculator {
         double div = 0;
         try{
             div = a / b;
-            System.out.println("Result of subtraction is: " + a + " / " + b + " = " + div);
-        }catch (ArithmeticException e){
-            System.out.println("ArithmeticException " + e.toString());
+            System.out.println("Result of divide is: " + a + " / " + b + " = " + div);
+        }catch (RuntimeException e){
+            System.out.println("RuntimeException " + e.toString());
         }
         return div;
     }

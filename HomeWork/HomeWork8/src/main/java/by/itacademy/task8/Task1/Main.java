@@ -8,7 +8,7 @@ import java.util.Scanner;
  */
 public class Main {
    public final static Scanner input = new Scanner(System.in);
-    public static boolean success = false;
+
 
     public static void main(String[] args) {
 
@@ -17,14 +17,14 @@ public class Main {
 
         do{
             selector = input.nextInt();
-
+            boolean success = false;
 
                 switch (selector) {
                     case (1): {
                         while (!success) {
                             try {
                                 System.out.println("Enter arguments for summing: ");
-                                Calculator.sum(input.nextDouble(), input.nextDouble());
+                                Calculator.sum(input.nextInt(), input.nextInt());
                                 success = true;
                             } catch (Exception e) {
                                 input.next();
@@ -51,8 +51,8 @@ public class Main {
                     case (3):{
                         while (!success) {
                             try {
-                                System.out.println("Enter arguments for subtraction: ");
-                                Calculator.multiply(input.nextDouble(), input.nextDouble());
+                                System.out.println("Enter arguments for multiply: ");
+                                Calculator.multiply(input.nextInt(), input.nextInt());
                                 success = true;
                             } catch (Exception e) {
                                 input.next();
@@ -65,7 +65,7 @@ public class Main {
                     case (4):{
                         while (!success) {
                             try {
-                                System.out.println("Enter arguments for subtraction: ");
+                                System.out.println("Enter arguments for divide: ");
                                 Calculator.divide(input.nextDouble(), input.nextDouble());
                                 success = true;
                             } catch (Exception e) {
