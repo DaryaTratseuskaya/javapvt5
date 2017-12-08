@@ -25,11 +25,11 @@ public class File {
             Scanner input = new Scanner(System.in);
             System.out.println("Enter text: ");
             // запись всей строки
-            String text = input.next();
-            writer.write(text);
+            String text = input.nextLine();
+//            writer.write(text);
             // запись по символам
 //            writer.append('\n');
-//            writer.append('E');
+            writer.append(text);
 
             writer.flush();
         }
