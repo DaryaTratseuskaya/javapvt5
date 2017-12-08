@@ -107,19 +107,4 @@ public class Main {
         return true;
     }
 
-//    public static int readFromConsole()  {
-//        int selector = 0;
-//        selector = input.nextInt();
-//        try {
-//
-//
-//            if (!input.hasNextInt()) {
-//                throw new UnexpectedUserInput();
-//            }
-//        } catch (UnexpectedUserInput ex) {
-//            System.out.println("Invalid Entry! Enter Integer! ");
-//        }
-//
-//        return selector;
-//    }
 }
