@@ -1,6 +1,4 @@
-package by.itacademy.task8.Task1;
-
-import java.util.Scanner;
+package by.itacademy.task9.Task1;
 
 /**
  * Created by daryatratseuskaya on 12/7/17
@@ -19,9 +17,6 @@ public class Calculator {
 
  */
 
-    public static void main(String[] args) {
-
-    }
 
 
     public static  int sum(int a, int b){

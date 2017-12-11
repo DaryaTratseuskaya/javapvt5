@@ -1,4 +1,4 @@
-package by.itacademy.task8.Task3;
+package by.itacademy.task9.Task3;
 
 import java.io.FileReader;
 import java.io.FileWriter;

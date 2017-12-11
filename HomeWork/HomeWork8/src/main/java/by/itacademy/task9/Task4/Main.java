@@ -1,7 +1,6 @@
-package by.itacademy.task8.Task4;
+package by.itacademy.task9.Task4;
 
 import java.io.*;
-import java.util.Arrays;
 import java.util.Scanner;
 
 /**

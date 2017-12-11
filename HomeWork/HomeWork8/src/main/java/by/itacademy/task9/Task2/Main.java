@@ -1,8 +1,7 @@
-package by.itacademy.task8.Task2;
+package by.itacademy.task9.Task2;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.regex.Matcher;
 
 /**
  * Created by daryatratseuskaya on 12/7/17
