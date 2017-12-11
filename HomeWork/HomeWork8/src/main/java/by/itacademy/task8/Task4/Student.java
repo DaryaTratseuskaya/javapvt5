@@ -9,7 +9,7 @@ public class Student {
     private String lastName;
     private String secondName;
     private int age;
-    private String diagnosis;
+    private String faculty;
     private boolean OnFile;
 
     public boolean isOnFile() {
@@ -36,12 +36,12 @@ public class Student {
         this.age = age;
     }
 
-    public String getDiagnosis() {
-        return diagnosis;
+    public String getFaculty() {
+        return faculty;
     }
 
-    public void setDiagnosis(String diagnosis) {
-        this.diagnosis = diagnosis;
+    public void setFaculty(String faculty) {
+        this.faculty = faculty;
     }
 
 

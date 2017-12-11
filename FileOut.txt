@@ -1,2 +1,2 @@
-rrr,rrr,rrr,34,rrr,true
-ttt,ttt,ttt,67,ttt,false
+нннн,нннн,ннннн,65,ннн,true
+гггг,гггггг,гггггггг,54,ен,false
