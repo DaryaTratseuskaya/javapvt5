@@ -1,4 +1,4 @@
-package by.itacademy.task4.Task1;
+package by.itacademy.task7.Task1;
 
 import java.text.DateFormat;
 import java.text.ParseException;

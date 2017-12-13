@@ -1,4 +1,4 @@
-package by.itacademy.task9.Task4;
+package by.itacademy.task8.Task4;
 
 import java.io.*;
 import java.util.Scanner;
@@ -25,6 +25,8 @@ public class Main {
 
         String[] data = readFromFile();
         Student[] students1 = dataToStudents(data);
+
+
         searchStudent(students1);
 
     }

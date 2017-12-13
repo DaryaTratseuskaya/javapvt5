@@ -1,4 +1,4 @@
-package by.itacademy.task9.Task2;
+package by.itacademy.task8.Task2;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
