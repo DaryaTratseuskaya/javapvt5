@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by daryatratseuskaya on 12/13/17
  */
-public class Build {
+public class Building {
 
    private List<Room> roomList = new ArrayList<>();
 

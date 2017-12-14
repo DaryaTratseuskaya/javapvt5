@@ -9,10 +9,6 @@ import java.util.List;
  */
 public class Room {
 
-    final private int maxSpaceFillPercent = 70;
-    final private int windowLight = 700;
-    final private int maxLightInRoom = 4000;
-    final private int minLightInRoom = 300;
 
     private int numberOfWindows;
 
@@ -26,6 +22,8 @@ public class Room {
         lampList.add(lamp);
 
     }
+
+
 
     public void addFurniture(Furniture furniture)throws Exception{ //сделать свойэксепшен и проверку на свободное место
         //проверка и кинуть ошибку
