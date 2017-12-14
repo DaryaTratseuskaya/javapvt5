@@ -9,6 +9,13 @@ import java.util.List;
  */
 public class Room {
 
+    private String roomName;
+
+    public Room(String roomName, int numberOfWindows, double square) {
+        this.roomName = roomName;
+        this.numberOfWindows = numberOfWindows;
+        this.square = square;
+    }
 
     private int numberOfWindows;
 
@@ -22,6 +29,11 @@ public class Room {
         lampList.add(lamp);
 
     }
+    public void addManyLamps(List<Lamp> lamps){
+        lampList.addAll(lamps);
+
+    }
+
 
 
 
@@ -57,5 +69,13 @@ public class Room {
 
     public void setNumberOfWindows(int numberOfWindows) {
         this.numberOfWindows = numberOfWindows;
+    }
+
+    public String getRoomName() {
+        return roomName;
+    }
+
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
     }
 }
