@@ -39,7 +39,27 @@ public class Main {
             System.out.println("sumAllLight = " + sumAllLight + " > " + "maxLightInRoom = " + calculations.maxLightInRoom + " " + e.toString());
         }
 
+        List<Furniture> furnitureList= new ArrayList<>();
+        furnitureList.add(new Furniture("Table",10));
+        furnitureList.add(new Furniture("Chair", 5));
+        furnitureList.add(new Furniture("Sofa",10));
 
+        room.addManyFurniture(furnitureList);
+
+         room = new Room("Room #2",0,100);
+         room.addManyLamps(lampList);
+         room.addManyFurniture(furnitureList);
+
+         double getSumFurniture = calculations.getSumFurniture(furnitureList);
+        System.out.println("getSumFurniture = " + getSumFurniture);
+         double calculatePercentFurniture = calculations.calculatePercentFurniture(getSumFurniture, room.getSquare());
+        System.out.println("calculatePercentFurniture = " + calculatePercentFurniture);
+
+        try {
+            calculations.checkSpace(calculatePercentFurniture,calculations.maxSpaceFillPercent);
+        } catch (SpaceUsageTooMuchException e) {
+            System.out.println("Error " + e.toString());
+        }
     }
 
 

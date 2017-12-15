@@ -34,6 +34,9 @@ public class Room {
 
     }
 
+    public void addManyFurniture(List<Furniture> furnitures){
+        furnitureList.addAll(furnitures);
+    }
 
 
 

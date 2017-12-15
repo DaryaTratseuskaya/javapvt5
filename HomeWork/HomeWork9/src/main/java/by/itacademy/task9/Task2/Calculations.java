@@ -7,10 +7,10 @@ import java.util.List;
  */
 public class Calculations {
 
-    final private int maxSpaceFillPercent = 70;
-    final private int windowLight = 700;
+    final public double maxSpaceFillPercent = 70;
+    final public int windowLight = 700;
     final public int maxLightInRoom = 4000;
-    final private int minLightInRoom = 300;
+    final public int minLightInRoom = 300;
 
     /**
      * Return sum of lamps light
@@ -55,4 +55,36 @@ public class Calculations {
             throw new IlluminationTooMuchException();
         }
     }
+
+    public double getSumFurniture(List<Furniture> furnitures){
+        double sumFurniture = 0;
+        if (furnitures != null || furnitures.size() < 1){
+            for (int i = 0; i < furnitures.size(); i ++){
+                sumFurniture = sumFurniture + furnitures.get(i).getSquareFurniture();
+
+            }
+        }
+            return sumFurniture;
+    }
+
+
+    public double calculatePercentFurniture(double sumFurniture, double roomSquare){
+        double percentFurniture = 0;
+        percentFurniture =  (sumFurniture * 100)/roomSquare;
+        return percentFurniture;
+    }
+
+    public void checkSpace(double percentFurniture,double maxSpaceFillPercent ) throws SpaceUsageTooMuchException{
+        if (percentFurniture > maxSpaceFillPercent){
+            throw new SpaceUsageTooMuchException();
+        }
+
+
+
+
+    }
+
+
+
+
 }
