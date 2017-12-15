@@ -8,9 +8,16 @@ import java.util.List;
  */
 public class Building {
 
-   private List<Room> roomList = new ArrayList<>();
+    private String buildingName;
 
-    public void addRoom(Room room){
+    public Building(String buildingName) {
+        this.buildingName = buildingName;
+    }
+
+    private List<Building> buildingList = new ArrayList<>();
+    private List<Room> roomList = new ArrayList<>();
+
+    public void addRoom(Room room) {
         roomList.add(room);
     }
 
