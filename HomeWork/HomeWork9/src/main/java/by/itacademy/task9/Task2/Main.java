@@ -51,15 +51,18 @@ public class Main {
          room.addManyFurniture(furnitureList);
 
          double getSumFurniture = calculations.getSumFurniture(furnitureList);
-        System.out.println("getSumFurniture = " + getSumFurniture);
+        System.out.println("getSumFurniture = " + getSumFurniture+ " square meters");
          double calculatePercentFurniture = calculations.calculatePercentFurniture(getSumFurniture, room.getSquare());
-        System.out.println("calculatePercentFurniture = " + calculatePercentFurniture);
+        System.out.println("calculatePercentFurniture = " + calculatePercentFurniture + " %");
 
         try {
             calculations.checkSpace(calculatePercentFurniture,calculations.maxSpaceFillPercent);
         } catch (SpaceUsageTooMuchException e) {
             System.out.println("Error " + e.toString());
         }
+
+        double freeSpace = calculations.checkFreeSpace(room.getSquare(),getSumFurniture);
+        System.out.println("Free space left in square meters: " + freeSpace);
     }
 
 

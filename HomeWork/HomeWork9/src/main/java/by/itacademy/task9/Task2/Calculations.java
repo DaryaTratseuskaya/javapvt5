@@ -74,17 +74,23 @@ public class Calculations {
         return percentFurniture;
     }
 
-    public void checkSpace(double percentFurniture,double maxSpaceFillPercent ) throws SpaceUsageTooMuchException{
-        if (percentFurniture > maxSpaceFillPercent){
+    public void checkSpace(double percentFurniture,double maxSpaceFillPercent ) throws SpaceUsageTooMuchException {
+        if (percentFurniture > maxSpaceFillPercent) {
             throw new SpaceUsageTooMuchException();
         }
+    }
 
-
-
+        public double checkFreeSpace(double squareRoom, double sumFurniture){
+            double freeSquare = 0;
+            return freeSquare = squareRoom - sumFurniture;
 
     }
 
 
 
-
 }
+
+
+
+
+
