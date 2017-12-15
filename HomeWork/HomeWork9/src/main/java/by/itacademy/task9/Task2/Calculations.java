@@ -27,33 +27,33 @@ public class Calculations {
         return sumLamp;
     }
 
-    public void calcLampsInRoom(List<Room> roomList,List<Lamp> lampList){
-        int lampInRoom = 0;
+    public  int calcLampsInRoom(List<Building> buildingList,List<Room> roomList,List<Lamp> lampList){
 
+        for (Building building : buildingList){
+            int lampsInRoom = 0;
+            for (Room room : building.getRoomList()){
+                for (Lamp lamp : lampList){
+                   return  lampsInRoom = lamp.getLight();
+                }
+            }
+        }
+
+        return 0;
     }
 
-    /**
-     * Calculate light from the windows
-     * @param
-     * @return вызвать метод в другом, где финальная проверка
-     */
-    public void calculateLightOfWindows( List<Room> roomList){
+    public int calculateLightOfWindows( List<Room> roomList){
         if (roomList != null || roomList.size() < 1) {
             for (int i = 0; i < roomList.size(); i++) {
                 int lightOfWindows = 0;
-                lightOfWindows = roomList.get(i).getNumberOfWindows() * windowLight;
+               return lightOfWindows = roomList.get(i).getNumberOfWindows() * windowLight;
             }
         }
+        return 0;
     }
 
-    /**
-     * Calculate total illumination from windows and lamps
-     * @param totalLightWindow
-     * @param sumLamp
-     */
-    public int sumAllLight(int totalLightWindow, int sumLamp){
+    public int sumAllLight(int lampsInRoom, int lightOfWindows){
         int sumAllLight = 0;
-        return sumAllLight = totalLightWindow + sumLamp;
+        return sumAllLight = lampsInRoom + lightOfWindows;
     }
 
     /**

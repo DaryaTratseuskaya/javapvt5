@@ -21,4 +21,8 @@ public class Building {
         roomList.add(room);
     }
 
+    public List<Room> getRoomList(){
+        return this.roomList;
+    }
+
 }
