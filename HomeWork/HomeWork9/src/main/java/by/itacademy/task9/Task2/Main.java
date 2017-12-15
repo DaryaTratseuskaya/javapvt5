@@ -27,11 +27,12 @@ public class Main {
 
         roomList.get(0).addManyLamps(lampList);
 
-        lampList.get(1).getLight(0);
-
 
         buildingList.get(0).addRoom(roomList.get(0));
         roomList.get(0).addLamp(lampList.get(0));
+
+        buildingList.get(0).addRoom(roomList.get(1));
+        roomList.get(1).addLamp(lampList.get(1));
 
 
         int sumLamp = calculations.calculateLightOfLamp(lampList);

@@ -8,7 +8,7 @@ public class Lamp {
 
     private int light;
 
-    public int getLight(int light) {
+    public int getLight() {
 
         return light;
     }
