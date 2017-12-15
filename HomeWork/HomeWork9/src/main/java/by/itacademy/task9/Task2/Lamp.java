@@ -14,6 +14,7 @@ public class Lamp {
     }
 
     public void setLight(int light) {
+
         this.light = light;
     }
 
