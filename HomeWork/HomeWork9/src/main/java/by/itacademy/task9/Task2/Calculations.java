@@ -14,89 +14,100 @@ public class Calculations {
 
     /**
      * Return sum of lamps light
+     *
      * @param lamps - ArrayList of lamps
      * @return
      */
-    public int calculateLightOfLamp(List<Lamp> lamps){
+    public int calculateLightOfLamp(List<Lamp> lamps) {
         int sumLamp = 0;
-        if (lamps != null || lamps.size() < 1){
-            for (int i = 0; i < lamps.size(); i ++){
-                 sumLamp = sumLamp + lamps.get(i).getLight();
+        if (lamps != null || lamps.size() < 1) {
+            for (int i = 0; i < lamps.size(); i++) {
+                sumLamp = sumLamp + lamps.get(i).getLight();
             }
         }
         return sumLamp;
     }
 
-    public  int calcLampsInRoom(List<Building> buildingList,List<Room> roomList,List<Lamp> lampList){
+    public int calcLampsInRoom(List<Building> buildingList, List<Room> roomList, List<Lamp> lampList) {
 
-        for (Building building : buildingList){
-            int lampsInRoom = 0;
-            for (Room room : building.getRoomList()){
-                for (Lamp lamp : lampList){
-                   return  lampsInRoom = lamp.getLight();
-                }
+//        for (Building building : buildingList){
+//            for (Room room : building.getRoomList()){
+//                for (Lamp lamp : lampList){
+//                   return  lampsInRoom = lamp.getLight();
+//                }
+//            }
+//        }
+//
+        int[] lampsInRoom = new int[10];
+        int sum = 0;
+        if (lampList != null || lampList.size() < 1) {
+            for (int i = 0; i < lampList.size(); i++) {
+                sum = sum + buildingList.get(i).getRoomList().get(i).getLampList().get(i).getLight();
+                i++;
+                return lampsInRoom[i] = sum;
             }
         }
-
         return 0;
     }
 
-    public int calculateLightOfWindows( List<Room> roomList){
+    public int calculateLightOfWindows(List<Room> roomList) {
         if (roomList != null || roomList.size() < 1) {
             for (int i = 0; i < roomList.size(); i++) {
                 int lightOfWindows = 0;
-               return lightOfWindows = roomList.get(i).getNumberOfWindows() * windowLight;
+                return lightOfWindows = roomList.get(i).getNumberOfWindows() * windowLight;
             }
         }
         return 0;
     }
 
-    public int sumAllLight(int lampsInRoom, int lightOfWindows){
+    public int sumAllLight(int lampsInRoom, int lightOfWindows) {
         int sumAllLight = 0;
         return sumAllLight = lampsInRoom + lightOfWindows;
     }
 
     /**
      * Checks if light in the room is in limits
+     *
      * @param sum
      * @throws IlluminationTooMuchException
      */
-    public void lightLimitsCheck(int sum) throws IlluminationTooMuchException{
-        if (sum > maxLightInRoom){
+    public void lightLimitsCheck(int sum) throws IlluminationTooMuchException {
+        if (sum > maxLightInRoom) {
             throw new IlluminationTooMuchException();
         }
     }
 
-    public double getSumFurniture(List<Furniture> furnitures){
-        double sumFurniture = 0;
-        if (furnitures != null || furnitures.size() < 1){
-            for (int i = 0; i < furnitures.size(); i ++){
-                sumFurniture = sumFurniture + furnitures.get(i).getSquareFurniture();
-
+    public double getSumFurniture(List<Furniture> furnitures, List<Building> buildingList, List<Room> roomList) {
+        double[] sumFurniture = new double[10];
+        double sum = 0;
+        if (furnitures != null || furnitures.size() < 1) {
+            for (int i = 0; i < furnitures.size(); i++) {
+                sum = sum + buildingList.get(i).getRoomList().get(i).getFurnitureList().get(i).getSquareFurniture();
+                i++;
+                return sumFurniture[i] = sum;
             }
         }
-            return sumFurniture;
+        return 0;
     }
 
 
-    public double calculatePercentFurniture(double sumFurniture, double roomSquare){
+    public double calculatePercentFurniture(double sumFurniture, double roomSquare) {
         double percentFurniture = 0;
-        percentFurniture =  (sumFurniture * 100)/roomSquare;
+        percentFurniture = (sumFurniture * 100) / roomSquare;
         return percentFurniture;
     }
 
-    public void checkSpace(double percentFurniture,double maxSpaceFillPercent ) throws SpaceUsageTooMuchException {
+    public void checkSpace(double percentFurniture, double maxSpaceFillPercent) throws SpaceUsageTooMuchException {
         if (percentFurniture > maxSpaceFillPercent) {
             throw new SpaceUsageTooMuchException();
         }
     }
 
-        public double checkFreeSpace(double squareRoom, double sumFurniture){
-            double freeSquare = 0;
-            return freeSquare = squareRoom - sumFurniture;
+    public double checkFreeSpace(double squareRoom, double sumFurniture) {
+        double freeSquare = 0;
+        return freeSquare = squareRoom - sumFurniture;
 
     }
-
 
 
 }

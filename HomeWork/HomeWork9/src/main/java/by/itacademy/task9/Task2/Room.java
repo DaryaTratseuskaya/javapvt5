@@ -1,6 +1,5 @@
 package by.itacademy.task9.Task2;
 
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,9 +40,10 @@ public class Room {
         return this.lampList;
     }
 
+    public List<Furniture> getFurnitureList(){return this.furnitureList;}
 
 
-    public void addFurniture(Furniture furniture)throws Exception{ //сделать свойэксепшен и проверку на свободное место
+    public void addFurniture(Furniture furniture){ //сделать свойэксепшен и проверку на свободное место
         //проверка и кинуть ошибку
 //       if () {
 //           throw new Exception();

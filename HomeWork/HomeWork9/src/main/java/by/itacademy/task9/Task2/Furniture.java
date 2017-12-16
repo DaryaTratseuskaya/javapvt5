@@ -27,4 +27,7 @@ public class Furniture {
     public void setSquareFurniture(double squareFurniture) {
         this.squareFurniture = squareFurniture;
     }
+    public Furniture (double squareFurniture){
+         this.squareFurniture = squareFurniture;
+    }
 }

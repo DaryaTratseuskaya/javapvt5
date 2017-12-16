@@ -10,11 +10,29 @@ public class Building {
 
     private String buildingName;
 
+    private List<Building> buildingList = new ArrayList<>();
+
+    public List<Building> getBuildingList() {
+        return this.buildingList;
+    }
+
     public Building(String buildingName) {
+
         this.buildingName = buildingName;
     }
 
-    private List<Building> buildingList = new ArrayList<>();
+    public void setBuildingName(String buildingName) {
+        this.buildingName = buildingName;
+    }
+
+    public void setBuildingList(List<Building> buildingList) {
+        this.buildingList = buildingList;
+    }
+
+    public String getBuildingName() {
+        return buildingName;
+    }
+
     private List<Room> roomList = new ArrayList<>();
 
     public void addRoom(Room room) {
@@ -25,4 +43,6 @@ public class Building {
         return this.roomList;
     }
 
-}
+
+
+  }
