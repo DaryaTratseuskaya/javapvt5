@@ -41,10 +41,11 @@ public class Calculations {
         int[] lampsInRoom = new int[10];
         int sum = 0;
         if (lampList != null || lampList.size() < 1) {
-            for (int i = 0; i < lampList.size(); i++) {
+            for (int i = 0; i < buildingList.get(i).getRoomList().get(i).getLampList().size(); i++) {
                 sum = sum + buildingList.get(i).getRoomList().get(i).getLampList().get(i).getLight();
-                i++;
-                return lampsInRoom[i] = sum;
+                 lampsInRoom[i] = sum;
+                sum += i;
+                return sum;
             }
         }
         return 0;
@@ -81,10 +82,13 @@ public class Calculations {
         double[] sumFurniture = new double[10];
         double sum = 0;
         if (furnitures != null || furnitures.size() < 1) {
-            for (int i = 0; i < furnitures.size(); i++) {
+            for (int i = 0; i < buildingList.get(i).getRoomList().get(i).getFurnitureList().size(); i++) {
                 sum = sum + buildingList.get(i).getRoomList().get(i).getFurnitureList().get(i).getSquareFurniture();
-                i++;
-                return sumFurniture[i] = sum;
+                 sumFurniture[i] = sum;
+                 for (int j = 0; j < sumFurniture.length; j++) {
+                     sum += j;
+                     return sum;
+                 }
             }
         }
         return 0;

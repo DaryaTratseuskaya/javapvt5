@@ -31,8 +31,8 @@ public class Main {
         roomList.get(0).addLamp(lampList.get(0));
 
 
-        buildingList.get(0).addRoom(roomList.get(0));
-        roomList.get(0).addLamp(lampList.get(1));
+//        buildingList.get(0).addRoom(roomList.get(0));
+//        roomList.get(0).addLamp(lampList.get(1));
 
         roomList.get(0).addFurniture(furnitureList.get(0));
         roomList.get(0).addFurniture(furnitureList.get(1));
