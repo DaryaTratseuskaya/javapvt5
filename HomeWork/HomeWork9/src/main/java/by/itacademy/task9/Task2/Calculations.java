@@ -28,28 +28,18 @@ public class Calculations {
         return sumLamp;
     }
 
-    public int calcLampsInRoom(List<Building> buildingList, List<Room> roomList, List<Lamp> lampList) {
 
-//        for (Building building : buildingList){
-//            for (Room room : building.getRoomList()){
-//                for (Lamp lamp : lampList){
-//                   return  lampsInRoom = lamp.getLight();
-//                }
-//            }
-//        }
-//
-        int[] lampsInRoom = new int[10];
+    public int calcLightInRoom(Room room) {
         int sum = 0;
-        if (lampList != null || lampList.size() < 1) {
-            for (int i = 0; i < buildingList.get(i).getRoomList().get(i).getLampList().size(); i++) {
-                sum = sum + buildingList.get(i).getRoomList().get(i).getLampList().get(i).getLight();
-                 lampsInRoom[i] = sum;
-                sum += i;
-                return sum;
+        if (room != null && room.getLampList() != null) {
+            for (Lamp lamp: room.getLampList()) {
+                sum += lamp.getLight();
             }
         }
-        return 0;
+        return sum;
     }
+
+
 
     public int calculateLightOfWindows(List<Room> roomList) {
         if (roomList != null || roomList.size() < 1) {
@@ -78,20 +68,14 @@ public class Calculations {
         }
     }
 
-    public double getSumFurniture(List<Furniture> furnitures, List<Building> buildingList, List<Room> roomList) {
-        double[] sumFurniture = new double[10];
+    public double getSumFurniture(Room room) {
         double sum = 0;
-        if (furnitures != null || furnitures.size() < 1) {
-            for (int i = 0; i < buildingList.get(i).getRoomList().get(i).getFurnitureList().size(); i++) {
-                sum = sum + buildingList.get(i).getRoomList().get(i).getFurnitureList().get(i).getSquareFurniture();
-                 sumFurniture[i] = sum;
-                 for (int j = 0; j < sumFurniture.length; j++) {
-                     sum += j;
-                     return sum;
-                 }
+        if (room != null || room.getFurnitureList().size() != 0) {
+            for (Furniture furniture : room.getFurnitureList()) {
+                sum += furniture.getSquareFurniture();
             }
         }
-        return 0;
+            return sum;
     }
 
 

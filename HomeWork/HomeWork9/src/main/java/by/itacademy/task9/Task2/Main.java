@@ -14,7 +14,7 @@ public class Main {
 
         List<Room> roomList = new ArrayList<>();
         roomList.add(new Room("Room #1", 5, 100));
-//        roomList.add(new Room("Room #2", 5, 100));
+        roomList.add(new Room("Room #2", 5, 100));
 
 
         List<Lamp> lampList = new ArrayList<>();
@@ -31,8 +31,8 @@ public class Main {
         roomList.get(0).addLamp(lampList.get(0));
 
 
-//        buildingList.get(0).addRoom(roomList.get(0));
-//        roomList.get(0).addLamp(lampList.get(1));
+        buildingList.get(0).addRoom(roomList.get(0));
+        roomList.get(0).addLamp(lampList.get(1));
 
         roomList.get(0).addFurniture(furnitureList.get(0));
         roomList.get(0).addFurniture(furnitureList.get(1));
@@ -43,7 +43,7 @@ public class Main {
         int lightOfWindows = calculations.calculateLightOfWindows(roomList);
         System.out.println("Total Light from windows = " + lightOfWindows);
 
-        int calcLampsInRoom = calculations.calcLampsInRoom(buildingList, roomList, lampList);
+        int calcLampsInRoom = calculations.calcLightInRoom(roomList.get(0));
         System.out.println("Lamps In Room = " + calcLampsInRoom);
 
         int sumAllLight = calculations.sumAllLight(lightOfWindows, calcLampsInRoom);
@@ -57,8 +57,9 @@ public class Main {
         }
 
 
-        double getSumFurniture = calculations.getSumFurniture(furnitureList, buildingList, roomList);
+        double getSumFurniture = calculations.getSumFurniture(buildingList.get(0).getRoomList().get(0));
         System.out.println("Sum of furniture added = " + getSumFurniture + " square meters");
+
         double calculatePercentFurniture = calculations.calculatePercentFurniture(getSumFurniture, roomList.get(0).getSquare());
         System.out.println("Percent of Furniture in the room space = " + calculatePercentFurniture + " %");
 
@@ -76,26 +77,22 @@ public class Main {
             System.out.println(buildingList.get(i).getBuildingName());
         }
 
-        for (int i = 0; i < roomList.size(); i++) {
-            System.out.println(roomList.get(i).getRoomName());
-        }
+            System.out.println(roomList.get(0).getRoomName());
 
-        for (int i = 0; i < roomList.size(); i++) {
-            System.out.println("Illumination: Lamp power = " + roomList.get(i).getLampList().get(i).getLight() + ", number of windows = " +
-                    roomList.get(i).getNumberOfWindows() + ", total light = " + sumAllLight);
-        }
+
+//        ====print first room info====
+        System.out.println("Illumination: Lamp power = " + roomList.get(0).getLampList().get(0).getLight() + ", number of windows = " +
+                roomList.get(0).getNumberOfWindows() + ", total light = " + sumAllLight);
+
         System.out.println("Room square = " + roomList.get(0).getSquare() + " (space used = " + getSumFurniture + " m2, free space = " +
                 freeSpace + " m2 or " + calculatePercentFurniture + " % of square)");
 
         System.out.println(" Furniture : " + buildingList.get(0).getRoomList().get(0).getFurnitureList().get(0).getNameFurniture() +
                 " square = " + buildingList.get(0).getRoomList().get(0).getFurnitureList().get(0).getSquareFurniture());
+
         System.out.println(" Furniture : " + buildingList.get(0).getRoomList().get(0).getFurnitureList().get(1).getNameFurniture() +
                 " square = " + buildingList.get(0).getRoomList().get(0).getFurnitureList().get(1).getSquareFurniture());
 
-    }
-
-
-    public static void printAll() {
 
     }
 
