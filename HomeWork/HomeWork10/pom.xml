@@ -20,7 +20,7 @@
     </build>
     <packaging>jar</packaging>
 
-  <name>HomeWork7</name>
+  <name>HomeWork10</name>
 
   <dependencies>
     <dependency>
