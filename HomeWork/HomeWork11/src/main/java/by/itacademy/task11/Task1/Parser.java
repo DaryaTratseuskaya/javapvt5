@@ -66,14 +66,14 @@ public class Parser extends DefaultHandler{
                 try {
                     inputStream.close();
                 }catch (IOException e){
-                    System.out.println("Impossible to close inputstream");
+                    System.out.println("Impossible to close inputStream");
                 }
             }
             if (fileOutputStream != null){
                 try {
                     fileOutputStream.close();
                 }catch (IOException e) {
-                    System.out.println("Impossible to close fileOutPutstream");
+                    System.out.println("Impossible to close fileOutPutStream");
                 }
             }
         }
@@ -88,11 +88,15 @@ public class Parser extends DefaultHandler{
             saxParser.parse(new File("text.xml"), handler);
 
             Root root = handler.getRoot();
-            System.out.println(root);
+
             List<People> peopleList = handler.getPeopleList();
 
-            for(People people : peopleList)
-                System.out.println(people);
+            root.setPeople(peopleList);
+
+            System.out.println("==========================================");
+            System.out.println("root = " + root.toString());
+
+
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         }

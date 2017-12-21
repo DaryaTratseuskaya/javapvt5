@@ -25,72 +25,38 @@ public class MyHandler extends DefaultHandler {
         return peopleList;
     }
 
-
-    boolean bRootName = false;
-    boolean bId = false;
-    boolean bAge = false;
-    boolean bisDegree = false;
-    boolean bSurname = false;
-    boolean bPeopleName = false;
+    String path = "";
 
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes)
             throws SAXException {
 
+        path = path + "/" + qName;
 
-        if (qName.equalsIgnoreCase("root")) {
-
-            root = new Root();
-            bRootName = false;
-
-        } else if (qName.equalsIgnoreCase("name")) {
-
-            bRootName = true;
-
-        } else if (qName.equalsIgnoreCase("People")){
-
-            people = new People();
-
-            if (peopleList == null)
+        switch (path.toLowerCase()) {
+            case "/root":
+                root = new Root();
+                break;
+            case "/root/people":
                 peopleList = new ArrayList<>();
+                break;
+            case "/root/people/element":
+                people = new People();
+                break;
 
-        }  else if (qName.equalsIgnoreCase("age")) {
-
-            bAge = true;
-
-        } else if (qName.equalsIgnoreCase("people")) {
-
-            bId = true;
-
-        } else if (qName.equalsIgnoreCase("isDegree"))
-
-        {
-
-            bisDegree = true;
-
-        } else if (qName.equalsIgnoreCase("surname"))
-
-        {
-
-            bSurname = true;
-
-        } else if (qName.equalsIgnoreCase("name"))
-
-        {
-
-            bPeopleName = true;
         }
+
     }
 
 
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
-//        if (qName.equalsIgnoreCase("name")) {
-//            root.getName();
-//        } else
-            if (qName.equalsIgnoreCase("people")) {
-            //add People object to list
+
+        int lastIndex = path.lastIndexOf('/');
+        path = path.substring(0, lastIndex);
+
+        if ("element".equals(qName)) {
             peopleList.add(people);
         }
     }
@@ -98,24 +64,34 @@ public class MyHandler extends DefaultHandler {
     @Override
     public void characters(char ch[], int start, int length) throws SAXException {
 
-        if (bRootName) {
-            root.setName(new String(ch, start, length).trim());
-        } else if (bAge) {
-            people.setAge(Integer.parseInt(new String(ch, start, length)));
-            bAge = false;
-        } else if (bPeopleName) {
-            people.setName(new String(ch, start, length));
-            bPeopleName = false;
-        } else if (bSurname) {
-            people.setSurname(new String(ch, start, length));
-            bSurname = false;
-        } else if (bisDegree) {
-            people.setDegree(Boolean.parseBoolean(new String(ch, start, length)));
-            bisDegree = false;
-        } else if (bId) {
-            people.setId(new String(ch, start, length));
-            bId = false;
+        String value = new String(ch, start, length).trim();
+        switch (path) {
+            case "/root/name":
+                root.setName(value);
+                break;
+
+            case "root/people/element/id":
+                people.setId(value);
+                break;
+
+            case "/root/people/element/age":
+                people.setAge(Integer.parseInt(value));
+                break;
+
+            case "/root/people/element/isdegree":
+                people.setDegree(Boolean.parseBoolean(value));
+                break;
+
+            case "/root/people/element/name":
+                people.setName(value);
+                break;
+
+            case "/root/people/element/surname":
+                people.setSurname(value);
+
         }
+
+
     }
 }
 
