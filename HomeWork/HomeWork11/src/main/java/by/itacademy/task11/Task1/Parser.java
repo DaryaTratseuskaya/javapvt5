@@ -86,11 +86,11 @@ public class Parser extends DefaultHandler{
             SAXParser saxParser = saxParserFactory.newSAXParser();
             MyHandler handler = new MyHandler();
             saxParser.parse(new File("text.xml"), handler);
-            //Get People list
+
             Root root = handler.getRoot();
             System.out.println(root);
             List<People> peopleList = handler.getPeopleList();
-            //print people information
+
             for(People people : peopleList)
                 System.out.println(people);
         } catch (ParserConfigurationException | SAXException | IOException e) {

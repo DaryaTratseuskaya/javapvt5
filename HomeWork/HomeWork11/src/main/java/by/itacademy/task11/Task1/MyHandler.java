@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class MyHandler extends DefaultHandler {
 
-    private Root root = null;
+    private Root root;
 
     public Root getRoot() {
         return root;
@@ -26,14 +26,12 @@ public class MyHandler extends DefaultHandler {
     }
 
 
-    boolean bName = false;
+    boolean bRootName = false;
     boolean bId = false;
-    boolean bPeople = false;
     boolean bAge = false;
-
     boolean bisDegree = false;
     boolean bSurname = false;
-    boolean bName1 = false;
+    boolean bPeopleName = false;
 
 
     @Override
@@ -41,39 +39,57 @@ public class MyHandler extends DefaultHandler {
             throws SAXException {
 
 
-        if (qName.equalsIgnoreCase("name")){
+        if (qName.equalsIgnoreCase("root")) {
+
             root = new Root();
-            bName = true;
-
-        } else if (qName.equalsIgnoreCase("people")) {
-
-            String id = attributes.getValue("id");
-            people = new People();
-            people.setId((id));
-            if (peopleList == null)
-                peopleList = new ArrayList<>();
-
-        } else if (qName.equalsIgnoreCase("age")) {
-
-            bAge = true;
-
-        } else if (qName.equalsIgnoreCase("isDegree")) {
-
-            bisDegree = true;
-
-        } else if (qName.equalsIgnoreCase("surname")) {
-
-            bSurname = true;
+            bRootName = false;
 
         } else if (qName.equalsIgnoreCase("name")) {
 
-            bName1 = true;
+            bRootName = true;
+
+        } else if (qName.equalsIgnoreCase("People")){
+
+            people = new People();
+
+            if (peopleList == null)
+                peopleList = new ArrayList<>();
+
+        }  else if (qName.equalsIgnoreCase("age")) {
+
+            bAge = true;
+
+        } else if (qName.equalsIgnoreCase("people")) {
+
+            bId = true;
+
+        } else if (qName.equalsIgnoreCase("isDegree"))
+
+        {
+
+            bisDegree = true;
+
+        } else if (qName.equalsIgnoreCase("surname"))
+
+        {
+
+            bSurname = true;
+
+        } else if (qName.equalsIgnoreCase("name"))
+
+        {
+
+            bPeopleName = true;
         }
     }
 
+
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
-        if (qName.equalsIgnoreCase("People")) {
+//        if (qName.equalsIgnoreCase("name")) {
+//            root.getName();
+//        } else
+            if (qName.equalsIgnoreCase("people")) {
             //add People object to list
             peopleList.add(people);
         }
@@ -82,23 +98,21 @@ public class MyHandler extends DefaultHandler {
     @Override
     public void characters(char ch[], int start, int length) throws SAXException {
 
-        if (bName){
-            root.setName(new String(ch, start, length));
-        }else if (bAge) {
-            //age element, set Employee age
+        if (bRootName) {
+            root.setName(new String(ch, start, length).trim());
+        } else if (bAge) {
             people.setAge(Integer.parseInt(new String(ch, start, length)));
             bAge = false;
-        } else if (bName1) {
+        } else if (bPeopleName) {
             people.setName(new String(ch, start, length));
-            bName = false;
+            bPeopleName = false;
         } else if (bSurname) {
             people.setSurname(new String(ch, start, length));
             bSurname = false;
         } else if (bisDegree) {
             people.setDegree(Boolean.parseBoolean(new String(ch, start, length)));
             bisDegree = false;
-        }
-        else if (bId) {
+        } else if (bId) {
             people.setId(new String(ch, start, length));
             bId = false;
         }
