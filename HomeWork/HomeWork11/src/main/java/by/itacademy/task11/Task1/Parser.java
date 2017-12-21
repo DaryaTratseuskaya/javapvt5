@@ -59,7 +59,8 @@ public class Parser extends DefaultHandler{
 
 
         }catch (Exception e){
-            System.out.println("Impossible to download file");
+//            System.out.println("Impossible to download file" + e);
+            throw new RuntimeException(e);
         } finally {
             if (inputStream != null){
                 try {
@@ -87,7 +88,7 @@ public class Parser extends DefaultHandler{
             saxParser.parse(new File("text.xml"), handler);
             //Get People list
             Root root = handler.getRoot();
-
+            System.out.println(root);
             List<People> peopleList = handler.getPeopleList();
             //print people information
             for(People people : peopleList)

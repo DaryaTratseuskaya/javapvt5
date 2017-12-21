@@ -18,8 +18,8 @@ public class MyHandler extends DefaultHandler {
         return root;
     }
 
-    private List<People> peopleList = null;
-    private People people = null;
+    private List<People> peopleList;
+    private People people;
 
     public List<People> getPeopleList() {
         return peopleList;
@@ -39,17 +39,20 @@ public class MyHandler extends DefaultHandler {
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes)
             throws SAXException {
-        if (qName.equalsIgnoreCase("Root")) {
-            String name = attributes.getValue("name");
+
+
+        if (qName.equalsIgnoreCase("name")){
             root = new Root();
-            root.setName(name);
+            bName = true;
 
         } else if (qName.equalsIgnoreCase("people")) {
+
             String id = attributes.getValue("id");
             people = new People();
             people.setId((id));
             if (peopleList == null)
                 peopleList = new ArrayList<>();
+
         } else if (qName.equalsIgnoreCase("age")) {
 
             bAge = true;
@@ -62,7 +65,7 @@ public class MyHandler extends DefaultHandler {
 
             bSurname = true;
 
-        } else if (qName.equalsIgnoreCase("name1")) {
+        } else if (qName.equalsIgnoreCase("name")) {
 
             bName1 = true;
         }
@@ -79,7 +82,9 @@ public class MyHandler extends DefaultHandler {
     @Override
     public void characters(char ch[], int start, int length) throws SAXException {
 
-        if (bAge) {
+        if (bName){
+            root.setName(new String(ch, start, length));
+        }else if (bAge) {
             //age element, set Employee age
             people.setAge(Integer.parseInt(new String(ch, start, length)));
             bAge = false;
