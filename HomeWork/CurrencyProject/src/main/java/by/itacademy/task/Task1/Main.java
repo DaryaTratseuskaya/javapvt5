@@ -10,37 +10,43 @@ public class Main {
 
     public static void main(String[] args) {
         boolean checkParse = false;
+        Root root = new Root();
+//      user selects what type of file to download
+        int userSelectionDownloadMethod = selectFileTypeForDownload();
+//      call method to download file
+        Manager.downloadFile(userSelectionDownloadMethod);
+//      call method to parse file
+        root = Manager.parseFile(userSelectionDownloadMethod);
+//      call user menu to select action with data from the file
+        int userSelectionOfAction = selectActionMenu();
+//      call method to work with file
+        Manager.userSelection(userSelectionOfAction, root);
 
-       int userSelectionForParseMethods = startScreenMenu();
-        checkParse = selectParseWay(userSelectionForParseMethods);
-        if (checkParse) {
-            int userSelector = selectActionMenu();
-            if (userSelector != 0) {
-                 userSelection(userSelector);
-
-            }
-
-        }
-
+//
 
     }
 
-
-    public static int startScreenMenu() {
-        int userSelectionForParseMethods = 0;
+    /**
+     * Select type of file to Download
+     *
+     * @return
+     */
+    public static int selectFileTypeForDownload() {
+        int userSelectionDownloadMethod = 0;
 
         System.out.println("Please, make your choice: ");
         System.out.println("1 - Download XML");
         System.out.println("2 - Download JSON");
         System.out.println("0 - Exit application");
         System.out.println("Please, make your choice: ");
-        userSelectionForParseMethods = input.nextInt();
+        userSelectionDownloadMethod = input.nextInt();
 
-        return userSelectionForParseMethods;
+        return userSelectionDownloadMethod;
     }
 
+
     public static int selectActionMenu() {
-        int userSelector = 0;
+        int userSelectionOfAction = 0;
 
         System.out.println();
         System.out.println("Select action you want perform: ");
@@ -49,9 +55,9 @@ public class Main {
         System.out.println("3 - Print the full Currency List");
         System.out.println("4 - Sort by Currency Name");
         System.out.println("Please, make your choice: ");
-        userSelector = input.nextInt();
+        userSelectionOfAction = input.nextInt();
 
-        return userSelector;
+        return userSelectionOfAction;
     }
 
     private static int readInt(String message) {
@@ -73,136 +79,6 @@ public class Main {
         return result;
     }
 
-    public static boolean selectParseWay(int userSelectionForParseMethods) {
 
-
-        boolean success = false;
-
-        do {
-
-//            userSelectionForParseMethods = input.nextInt();
-
-            switch (userSelectionForParseMethods) {
-                case 1: {
-                    while (!success) {
-                        try {
-
-                            Downloader.downloadXML();
-                            Parsing parsing = null;
-                            parsing = new ParseXML();
-                            Root root = parsing.parse("currency.xml");
-                            success = true;
-                        } catch (Exception e) {
-                            input.next();
-                            System.out.println("Invalid entry: " + e.toString() + " Enter Integer");
-                        }
-
-                    }
-                    break;
-                }
-                case 2: {
-                    while (!success) {
-                        try {
-                            Downloader.downloadJSON();
-                            Parsing parsing = null;
-                            parsing = new ParseJSON();
-                            Root root = parsing.parse("currency.json");
-                            success = true;
-
-                        } catch (Exception e) {
-                            input.next();
-                            System.out.println("Invalid entry: " + e.toString() + " Enter Integer");
-                        }
-                    }
-                }
-            }
-        }
-        while (!success);
-
-        return success;
-    }
-
-    public static void userSelection(int select) {
-        Integer selector = null;
-        boolean success = false;
-
-        do {
-
-//            selector = input.nextInt();
-
-            switch (select) {
-                case 1: {
-                    while (!success) {
-                        try {
-//call for convert method
-                            System.out.println("Base currency is EUR: Enter the sum you want to convert:");
-                            double sum = 0;
-                            sum = input.nextDouble();
-                            System.out.println("Enter currency you want to convert:");
-
-
-                            success = true;
-                        } catch (Exception e) {
-                            input.next();
-                            System.out.println("Invalid entry: " + e.toString() + " Enter Integer");
-                        }
-
-                    }
-                    break;
-                }
-                case 2: {
-                    while (!success) {
-                        try {
-
-//call for search currency
-                            success = true;
-                        } catch (Exception e) {
-                            input.next();
-                            System.out.println("Invalid entry: " + e.toString() + " Enter Integer");
-                        }
-
-                    }
-                    break;
-                }
-                case 3: {
-                    while (!success) {
-                        try {
-//                            Manager manager = new Manager();
-//                            manager.printAllCurrencies();
-//call for print
-
-//                            for (int i = 0; i < root.getCurrency().size(); i++) {
-//                                System.out.println( root.getCurrency().get(i).getName());
-//                            }
-
-
-                            success = true;
-                        } catch (Exception e) {
-                            input.next();
-                            System.out.println("Invalid entry: " + e.toString() + " Enter Integer");
-                        }
-
-                    }
-                    break;
-                }
-                case 4: {
-                    while (!success) {
-                        try {
-
-//call for sorting
-                            success = true;
-                        } catch (Exception e) {
-                            input.next();
-                            System.out.println("Invalid entry: " + e.toString() + " Enter Integer");
-                        }
-
-                    }
-                    break;
-                }
-
-            }
-
-        } while (!success);
-    }
 }
 

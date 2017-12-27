@@ -35,10 +35,11 @@ public class ParseJSON implements Parsing{
 
             mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
             mapper.setDateFormat(dateFormat);
-            root = mapper.readValue(new File(fileName), Root.class);
+            root = mapper.readValue(new File("currency.json"), Root.class);
 
             System.out.println("=================================== JSON");
             System.out.println("root = " + root.toString());
+            System.out.println("=================================== JSON");
 
         } catch (Exception e) {
             e.printStackTrace();

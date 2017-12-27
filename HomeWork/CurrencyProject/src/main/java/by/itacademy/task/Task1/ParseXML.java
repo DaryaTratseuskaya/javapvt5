@@ -32,6 +32,7 @@ public class ParseXML implements Parsing {
 
             System.out.println("========================================== XML");
             System.out.println("root = " + root.toString());
+            System.out.println("========================================== XML");
 
 
         } catch (ParserConfigurationException | SAXException | IOException e) {
