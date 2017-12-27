@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+   <bankName>Super duper bank</bankName>
+   <bankLocation>Minks</bankLocation>
+   <date>2015-10-25 12:35:00 +0300</date>
+   <baseCurrencyId>1</baseCurrencyId>
+   <currency>
+      <element>
+         <code>786</code>
+         <id>0</id>
+         <name>USD</name>
+         <rate>1.1215</rate>
+         <visible>true</visible>
+      </element>
+      <element>
+         <code>345</code>
+         <id>1</id>
+         <name>EUR</name>
+         <rate>1</rate>
+         <visible>true</visible>
+      </element>
+      <element>
+         <code>633</code>
+         <id>2</id>
+         <name>CZK</name>
+         <rate>27.43</rate>
+         <visible>true</visible>
+      </element>
+      <element>
+         <code>987</code>
+         <id>3</id>
+         <name>HUF</name>
+         <rate>302.81</rate>
+         <visible>true</visible>
+      </element>
+      <element>
+         <code>567</code>
+         <id>4</id>
+         <name>CAD</name>
+         <rate>1.348</rate>
+         <visible>true</visible>
+      </element>
+      <element>
+         <code>786</code>
+         <id>5</id>
+         <name>ILS</name>
+         <rate>4.334</rate>
+         <visible>false</visible>
+      </element>
+   </currency>
+</root>
