@@ -22,13 +22,12 @@ import java.text.SimpleDateFormat;
  * <p>
  * Jackson ParseJSON
  */
-public class ParseJSON {
+public class ParseJSON implements Parsing{
 
     private static DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss Z");
 
-
-    public static Root parseJSON(String jsonSource) {
-
+    @Override
+    public Root parse(String fileName) {
         ObjectMapper mapper = new ObjectMapper();
         Root root = null;
         try {
@@ -36,7 +35,7 @@ public class ParseJSON {
 
             mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
             mapper.setDateFormat(dateFormat);
-            root = mapper.readValue(jsonSource, Root.class);
+            root = mapper.readValue(new File(fileName), Root.class);
 
             System.out.println("=================================== JSON");
             System.out.println("root = " + root.toString());
@@ -45,10 +44,7 @@ public class ParseJSON {
             e.printStackTrace();
         }
         return root;
-
     }
-
-
 }
 
 

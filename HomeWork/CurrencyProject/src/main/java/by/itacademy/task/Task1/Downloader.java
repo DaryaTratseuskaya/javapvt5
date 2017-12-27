@@ -45,7 +45,7 @@ public class Downloader {
                     fileOutputStream.write(buffer, 0, byteRead);
                 }
 
-//                parseJSON();
+
 
             } else {
                 System.out.println("Data not found = " + responseCode);
@@ -103,7 +103,7 @@ public class Downloader {
                     fileOutputStream.write(buffer, 0, byteRead);
                 }
 
-//                parseXML();
+
 
             } else {
                 System.out.println("Data not found = " + responseCode);

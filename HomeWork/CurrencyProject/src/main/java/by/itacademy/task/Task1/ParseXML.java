@@ -22,7 +22,7 @@ public class ParseXML implements Parsing {
         try {
             SAXParser saxParser = saxParserFactory.newSAXParser();
             MyHandlerXMLParse handler = new MyHandlerXMLParse();
-            saxParser.parse(new File("/Users/daryatratseuskaya/IdeaProjects/javapvt5/currency.xml"), handler);
+            saxParser.parse(new File("currency.xml"), handler);
 
             Root root = handler.getRoot();
 
