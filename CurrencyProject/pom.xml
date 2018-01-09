@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>by.it-academy</groupId>
-  <artifactId>by.it-academy-dtratseuskaya-homework3</artifactId>
+  <artifactId>by.it-academy-dtratseuskaya-currentProject</artifactId>
   <version>1.0</version>
     <build>
         <plugins>
