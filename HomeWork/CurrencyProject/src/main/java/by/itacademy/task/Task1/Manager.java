@@ -31,23 +31,22 @@ public class Manager {
         } else parsing = new ParseJSON();
 
         Root root = parsing.parse("currency");
-        List<Currency> currencyList = new ArrayList<>();
         return root;
     }
 
 
     public static void userSelection(int userSelectionOfAction, Root root) {
         if (userSelectionOfAction == 3) {
-                printCurrencyList(root);
-            }
+            printCurrencyList(root);
         }
-
+    }
 
     public static void printCurrencyList(Root root) {
         for (int i = 0; i < root.getCurrency().size(); i++) {
             System.out.println(root.getCurrency().get(i).getName());
         }
     }
+
 
 }
 

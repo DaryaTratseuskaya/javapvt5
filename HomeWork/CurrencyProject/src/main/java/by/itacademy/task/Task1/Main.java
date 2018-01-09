@@ -1,6 +1,6 @@
 package by.itacademy.task.Task1;
 
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by daryatratseuskaya on 12/26/17
@@ -9,6 +9,14 @@ public class Main {
     public final static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
+
+        List<CurrencyFullName> fullNames = new ArrayList<>();
+        fullNames.add(new CurrencyFullName("United States Dollar"));
+        fullNames.add(new CurrencyFullName("Euro"));
+
+        Map<Currency,CurrencyFullName> names = new HashMap<>();
+
+
         boolean checkParse = false;
         Root root = new Root();
 //      user selects what type of file to download
