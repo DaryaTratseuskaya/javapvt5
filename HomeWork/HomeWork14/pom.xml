@@ -34,6 +34,17 @@
           <artifactId>jackson-mapper-asl</artifactId>
           <version>1.9.13</version>
       </dependency>
+      <dependency>
+          <groupId>org.apache.tika</groupId>
+          <artifactId>tika-core</artifactId>
+          <version>0.10</version>
+      </dependency>
+
+      <dependency>
+          <groupId>org.apache.tika</groupId>
+          <artifactId>tika-parsers</artifactId>
+          <version>0.10</version>
+      </dependency>
   </dependencies>
   
 </project>
