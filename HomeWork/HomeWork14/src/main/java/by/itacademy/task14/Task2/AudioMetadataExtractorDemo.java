@@ -1,16 +1,23 @@
 package by.itacademy.task14.Task2;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.apache.tika.exception.TikaException;
 import org.apache.tika.metadata.Metadata;
 import org.apache.tika.parser.ParseContext;
 import org.apache.tika.parser.Parser;
 import org.apache.tika.parser.mp3.Mp3Parser;
+import org.jaudiotagger.audio.AudioFile;
+import org.jaudiotagger.audio.AudioFileIO;
+import org.jaudiotagger.audio.AudioHeader;
+import org.jaudiotagger.audio.exceptions.CannotReadException;
+import org.jaudiotagger.audio.exceptions.InvalidAudioFrameException;
+import org.jaudiotagger.audio.exceptions.ReadOnlyFileException;
+import org.jaudiotagger.tag.FieldKey;
+import org.jaudiotagger.tag.Tag;
+import org.jaudiotagger.tag.TagException;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -21,10 +28,8 @@ import org.xml.sax.helpers.DefaultHandler;
 public class AudioMetadataExtractorDemo {
 
     public static void main(String[] args) {
+        Logger.getLogger("org.jaudiotagger").setLevel(Level.OFF);
 
-// This audio file has metadata embedded in XMP (Extensible Metadata Platform) standard
-// created by Adobe Systems Inc. XMP standardizes the definition, creation, and
-// processing of extensible metadata.
         // check we are good with cmd line arguments
         if (!(args != null && args.length > 0)) {
             System.err.println("Invalid arguments");
@@ -36,6 +41,7 @@ public class AudioMetadataExtractorDemo {
             File f = new File(argument);
             if (f.isDirectory() && f.canRead()) {
                 traverseDirAndPrintAudioFiles(f);
+
             } else {
                 System.err.println("Directory " + argument + " specified, " +
                         "but it is not accessible (please make sure the name is correct");
@@ -54,10 +60,9 @@ public class AudioMetadataExtractorDemo {
                             f.getName().endsWith(".ogg") ||
                             f.getName().endsWith(".flac") ||
                             f.getName().endsWith(".aac")) {
-                        // you can adjust output format here
-                        System.out.println("Found audio file " + f.getAbsolutePath());
-                        getMetaData(f);
+                        getMp3MetaData(f);
                     }
+
                 }
             }
         }
@@ -68,43 +73,35 @@ public class AudioMetadataExtractorDemo {
         System.out.println("*** Usage: java LocalMusic [MusicDir1] [MusicDir2] [...]        ***");
     }
 
-    public static void getMetaData(File file) {
+    public static void getMp3MetaData(File file) {
+
+
+        int duration;
+        String artist, album, title;
 
         try {
+            AudioFile audioFile = AudioFileIO.read(file);
+            AudioHeader audioHeader = audioFile.getAudioHeader();
 
-            InputStream input = new FileInputStream(new File(String.valueOf(file)));
-            ContentHandler handler = new DefaultHandler();
-            Metadata metadata = new Metadata();
-            Parser parser = new Mp3Parser();
-            ParseContext parseCtx = new ParseContext();
-            parser.parse(input, handler, metadata, parseCtx);
-            input.close();
+            artist = audioFile.getTag().getFirst(FieldKey.ARTIST);
+            album = audioFile.getTag().getFirst(FieldKey.ALBUM);
+            title = audioFile.getTag().getFirst(FieldKey.TITLE);
+            duration = audioHeader.getTrackLength();
 
-// List all metadata
-//            String[] metadataNames = metadata.names();
-//
-//            for (String name : metadataNames) {
-//                System.out.println(name + ": " + metadata.get(name));
-//            }
 
-// Retrieve the necessary info from metadata
-// Names - title, xmpDM:artist etc. - mentioned below may differ based
-// on the standard used for processing and storing standardized and/or
-// proprietary information relating to the contents of a file.
+            System.out.println("Artist: " + artist);
+            System.out.println("\t" + "Album: " + album);
+            System.out.println("\t" + "Title: " + title + ". Duration: " + duration + "sec. (" + file.getAbsolutePath() + ")");
+            System.out.println();
 
-            System.out.println("Title: " + metadata.get("title"));
-            System.out.println("Artists: " + metadata.get("xmpDM:artist"));
-            System.out.println("Genre: " + metadata.get("xmpDM:genre"));
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (TikaException e) {
+        } catch (CannotReadException | TagException | InvalidAudioFrameException | IOException | ReadOnlyFileException e) {
             e.printStackTrace();
         }
+
+
     }
+
+
 }
 
