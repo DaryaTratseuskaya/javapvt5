@@ -1,14 +1,18 @@
 package by.itacademy.task14.Task2;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.apache.tika.exception.TikaException;
-import org.apache.tika.metadata.Metadata;
-import org.apache.tika.parser.ParseContext;
-import org.apache.tika.parser.Parser;
-import org.apache.tika.parser.mp3.Mp3Parser;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.AudioHeader;
@@ -27,6 +31,8 @@ import org.xml.sax.helpers.DefaultHandler;
  */
 public class AudioMetadataExtractorDemo {
 
+//    Map<String, List>
+
     public static void main(String[] args) {
         Logger.getLogger("org.jaudiotagger").setLevel(Level.OFF);
 
@@ -41,7 +47,8 @@ public class AudioMetadataExtractorDemo {
             File f = new File(argument);
             if (f.isDirectory() && f.canRead()) {
                 traverseDirAndPrintAudioFiles(f);
-
+                printData(albumMap);
+//                getCheckSum(f);
             } else {
                 System.err.println("Directory " + argument + " specified, " +
                         "but it is not accessible (please make sure the name is correct");
@@ -60,7 +67,9 @@ public class AudioMetadataExtractorDemo {
                             f.getName().endsWith(".ogg") ||
                             f.getName().endsWith(".flac") ||
                             f.getName().endsWith(".aac")) {
-                        getMp3MetaData(f);
+
+                        getMp3MetaData(albumMap, f);
+
                     }
 
                 }
@@ -73,7 +82,9 @@ public class AudioMetadataExtractorDemo {
         System.out.println("*** Usage: java LocalMusic [MusicDir1] [MusicDir2] [...]        ***");
     }
 
-    public static void getMp3MetaData(File file) {
+    public static Map<String, List> albumMap = new HashMap<>();
+
+    public static void getMp3MetaData(Map<String, List> albumMap, File file) {
 
 
         int duration;
@@ -89,17 +100,39 @@ public class AudioMetadataExtractorDemo {
             duration = audioHeader.getTrackLength();
 
 
-            System.out.println("Artist: " + artist);
-            System.out.println("\t" + "Album: " + album);
-            System.out.println("\t" + "Title: " + title + ". Duration: " + duration + "sec. (" + file.getAbsolutePath() + ")");
-            System.out.println();
+            String albumName = album;
+            List<File> albumTracks = albumMap.containsKey(albumName) ? albumMap.get(albumName) : new ArrayList<>();
+            albumTracks.add(file);
+            if (!albumMap.containsKey(albumName)) {
+                albumMap.put(albumName, albumTracks);
+            }
+
+
+//            System.out.println("Artist: " + artist);
+//            System.out.println("\t" + "Album: " + album);
+//            System.out.println("\t" + "Title: " + title + ". Duration: " + duration + " sec. (" + file.getAbsolutePath() + ")");
+//            System.out.println();
 
 
         } catch (CannotReadException | TagException | InvalidAudioFrameException | IOException | ReadOnlyFileException e) {
             e.printStackTrace();
         }
 
+    }
 
+
+    public static void printData(Map<String, List> albumMap) {
+
+        Map<String, List> name = new HashMap<>();
+
+        for (Map.Entry<String, List> entry : albumMap.entrySet()) {
+            String key = entry.getKey();
+            List<String> values = entry.getValue();
+            System.out.println(key);
+            System.out.println(values);
+
+            System.out.println();
+        }
     }
 
 
