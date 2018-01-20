@@ -9,13 +9,11 @@ import org.jaudiotagger.audio.exceptions.ReadOnlyFileException;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.TagException;
 
+import javax.lang.model.type.ArrayType;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by daryatratseuskaya on 1/19/18
@@ -160,6 +158,34 @@ public class FileScanner {
             e.printStackTrace();
         }
         return trackResult;
+
+    }
+
+    public void checkSumIdentical(List<Artist> artists) {
+
+        Set s = new HashSet();
+        Set <String> dups = new HashSet();
+        List<Artist> result = new ArrayList<>();
+        String checkSum = null;
+
+        for (int i = 0; i < artists.size(); i++) {
+            for (int j = 0; j < artists.get(i).getAlbums().size(); j++) {
+                for (int k = 0; k < artists.get(i).getAlbums().get(j).getTracks().size(); k++) {
+                    checkSum = artists.get(i).getAlbums().get(j).getTracks().get(k).getCheckSum();
+                    if (!s.add(checkSum)) dups.add(checkSum);
+                }
+            }
+        }
+        for (String checkSumDup : dups){
+            for (Track t : trackList){
+                if (t.getCheckSum().equals(checkSumDup)){
+                    System.out.println("Set :- " + dups + ", path = " + t.getTrackPath());
+
+                }
+            }
+
+        }
+
 
     }
 
