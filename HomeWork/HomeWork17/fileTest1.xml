@@ -1,0 +1,11 @@
+<files>
+  <name>ext name = ".rtf"  3 items<file>test3Subfolder.rtf</file>
+    <file>test1.rtf</file>
+    <file>test2.rtf</file>
+  </name>
+  <name>ext name = ".DS_Store"  2 items<file>.DS_Store</file>
+    <file>.DS_Store</file>
+  </name>
+  <name>ext name = ".xml"  1 items<file>fileTest.xml</file>
+  </name>
+</files>
