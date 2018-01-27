@@ -1,8 +1,9 @@
-package by.itacademy.task.Task1;
+package by.itacademy.task.Task1.data.xml;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
+import by.itacademy.task.Task1.Currency;
+import by.itacademy.task.Task1.Parsing;
+import by.itacademy.task.Task1.Root;
+import by.itacademy.task.Task1.data.xml.MyHandlerXMLParse;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.*;

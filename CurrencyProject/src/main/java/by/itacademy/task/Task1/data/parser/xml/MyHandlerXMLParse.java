@@ -1,5 +1,7 @@
-package by.itacademy.task.Task1;
+package by.itacademy.task.Task1.data.xml;
 
+import by.itacademy.task.Task1.Currency;
+import by.itacademy.task.Task1.Root;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;

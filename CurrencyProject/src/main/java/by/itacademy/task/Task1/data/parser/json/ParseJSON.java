@@ -1,6 +1,8 @@
-package by.itacademy.task.Task1;
+package by.itacademy.task.Task1.data.json;
 
 
+import by.itacademy.task.Task1.Parsing;
+import by.itacademy.task.Task1.Root;
 import com.fasterxml.jackson.databind.DeserializationConfig;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -22,7 +24,7 @@ import java.text.SimpleDateFormat;
  * <p>
  * Jackson ParseJSON
  */
-public class ParseJSON implements Parsing{
+public class ParseJSON implements Parsing {
 
     private static DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss Z");
 

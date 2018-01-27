@@ -1,4 +1,4 @@
-package by.itacademy.task.Task1;
+package by.itacademy.task.Task1.data.downloader;
 
 import java.io.File;
 import java.io.FileOutputStream;
