@@ -1,7 +1,7 @@
-package by.itacademy.task.Task1.data.xml;
+package by.itacademy.task.Task1.data.parser.xml;
 
-import by.itacademy.task.Task1.Currency;
-import by.itacademy.task.Task1.Root;
+import by.itacademy.task.Task1.domain.entity.Currency;
+import by.itacademy.task.Task1.domain.entity.Root;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -10,7 +10,6 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**

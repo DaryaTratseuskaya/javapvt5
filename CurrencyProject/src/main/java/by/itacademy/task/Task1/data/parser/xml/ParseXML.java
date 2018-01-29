@@ -1,9 +1,8 @@
-package by.itacademy.task.Task1.data.xml;
+package by.itacademy.task.Task1.data.parser.xml;
 
-import by.itacademy.task.Task1.Currency;
-import by.itacademy.task.Task1.Parsing;
-import by.itacademy.task.Task1.Root;
-import by.itacademy.task.Task1.data.xml.MyHandlerXMLParse;
+import by.itacademy.task.Task1.domain.entity.Currency;
+import by.itacademy.task.Task1.data.parser.Parsing;
+import by.itacademy.task.Task1.domain.entity.Root;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.*;
@@ -39,9 +38,6 @@ public class ParseXML implements Parsing {
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         }
-
-
-
 
         return null;
     }

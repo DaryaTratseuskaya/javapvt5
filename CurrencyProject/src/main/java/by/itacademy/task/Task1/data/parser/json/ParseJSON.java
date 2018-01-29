@@ -1,21 +1,13 @@
-package by.itacademy.task.Task1.data.json;
+package by.itacademy.task.Task1.data.parser.json;
 
 
-import by.itacademy.task.Task1.Parsing;
-import by.itacademy.task.Task1.Root;
-import com.fasterxml.jackson.databind.DeserializationConfig;
+import by.itacademy.task.Task1.data.parser.Parsing;
+import by.itacademy.task.Task1.domain.entity.Root;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.databind.exc.InvalidFormatException;
-import com.fasterxml.jackson.databind.util.ISO8601DateFormat;
 
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 

@@ -1,4 +1,4 @@
-package by.itacademy.task.Task1;
+package by.itacademy.task.Task1.domain.entity;
 
 import java.util.ArrayList;
 import java.util.Date;

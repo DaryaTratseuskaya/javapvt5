@@ -1,4 +1,4 @@
-package by.itacademy.task.Task1;
+package by.itacademy.task.Task1.domain.entity;
 
 /**
  * Created by daryatratseuskaya on 12/26/17

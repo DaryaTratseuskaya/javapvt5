@@ -28,7 +28,7 @@ public class Main {
                    AddCashInterface addCash = new ATMPriorBank();
                    addCash.addCash(orgAmount);
                    System.out.println();
-                   System.out.println ("Please, make your choiсe: ");
+                   System.out.println ("Please, make your choice: ");
                    break;
                }
                case 2: {
@@ -39,7 +39,7 @@ public class Main {
                    TakeCashInterface takeCash = new ATMPriorBank();
                    takeCash.takeCash(takeMoney);
                    System.out.println();
-                   System.out.println ("Please, make your choiсe: ");
+                   System.out.println ("Please, make your choice: ");
                    break;
                }
                case 3: {
@@ -48,7 +48,7 @@ public class Main {
                    cashAmount.getCashAmount();
                    printTotal(cashAmount);
                    System.out.println();
-                   System.out.println ("Please, make your choiсe: ");
+                   System.out.println ("Please, make your choice: ");
                    break;
                }
                case 4: {
@@ -57,7 +57,7 @@ public class Main {
                    atmProducer.getATMProducer();
                    printATMProducer(atmProducer);
                    System.out.println();
-                   System.out.println ("Please, make your choiсe: ");
+                   System.out.println ("Please, make your choice: ");
                    break;
                }
                case 5: {
@@ -66,7 +66,7 @@ public class Main {
                    bankName.getBankName();
                    printBankName(bankName);
                    System.out.println();
-                   System.out.println ("Please, make your choiсe: ");
+                   System.out.println ("Please, make your choice: ");
                    break;
                }
                default:{

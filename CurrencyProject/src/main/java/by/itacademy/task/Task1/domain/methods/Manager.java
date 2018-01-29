@@ -1,13 +1,11 @@
-package by.itacademy.task.Task1;
+package by.itacademy.task.Task1.domain.methods;
 
 import by.itacademy.task.Task1.data.downloader.Downloader;
+
 import by.itacademy.task.Task1.data.parser.Parsing;
 import by.itacademy.task.Task1.data.parser.json.ParseJSON;
 import by.itacademy.task.Task1.data.parser.xml.ParseXML;
 import by.itacademy.task.Task1.domain.entity.Root;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -16,25 +14,24 @@ import java.util.List;
 public class Manager {
 
 
-    public static void conversion(double firstCurrency, double secondCurrency) {
-
-
-    }
-
     public static void downloadFile(int userSelectionDownloadMethod) {
 
-        if (userSelectionDownloadMethod != 1) {
+        if (userSelectionDownloadMethod == 1) {
             Downloader.downloadXML();
-        } else Downloader.downloadJSON();
+        } else if (userSelectionDownloadMethod == 2) {
+            Downloader.downloadJSON();
+        }
     }
 
     public static Root parseFile(int userSelectionDownloadMethod) {
         Parsing parsing = null;
 
-        if (userSelectionDownloadMethod != 1) {
+        if (userSelectionDownloadMethod == 1) {
 
             parsing = new ParseXML();
-        } else parsing = new ParseJSON();
+        } else if (userSelectionDownloadMethod == 2) {
+            parsing = new ParseJSON();
+        }
 
         Root root = parsing.parse("currency");
         return root;
@@ -42,41 +39,31 @@ public class Manager {
 
 
     public static void userSelection(int userSelectionOfAction, Root root) {
-        switch (userSelectionOfAction){
+        switch (userSelectionOfAction) {
             case (1): {
+                System.out.println("entered 1");
 
-            }
-            case (2): {
-
-            }
-            case (3): {
-                addFullCurrencyName();
                 break;
 
             }
+            case (2): {
+                System.out.println("entered 2");
+                break;
+
+            }
+            case (3): {
+                FullCurrencyName.addFullCurrencyName();
+                break;
+
+            }
+            case (4): {
+                System.out.println("entered 4");
+                break;
+
+
+            }
 
         }
-    }
-
-
-    public static void addFullCurrencyName() {
-
-
-        List<String> currencyList = new ArrayList<>();
-        currencyList.add("USD – United States Dollar");
-        currencyList.add("EUR – Euro Member Countries");
-        currencyList.add("CZK – Czech Republic Koruna");
-        currencyList.add("HUF – Hungary Forint");
-        currencyList.add("CAD – Canada Dollar");
-        currencyList.add("ILS – Israel Shekel");
-
-
-        for (int i = 0; i < currencyList.size(); i++) {
-
-            System.out.println(currencyList.get(i));
-        }
-
-
     }
 
 
