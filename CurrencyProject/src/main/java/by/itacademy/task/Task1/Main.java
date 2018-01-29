@@ -1,9 +1,7 @@
 package by.itacademy.task.Task1;
 
 import by.itacademy.task.Task1.domain.entity.Root;
-import by.itacademy.task.Task1.domain.methods.ParseThreadJSON;
-import by.itacademy.task.Task1.domain.methods.FullCurrencyName;
-import by.itacademy.task.Task1.domain.methods.ParseThreadXML;
+import by.itacademy.task.Task1.domain.methods.*;
 
 import java.util.*;
 
@@ -11,6 +9,8 @@ import java.util.*;
  * Created by daryatratseuskaya on 12/26/17
  */
 public class Main {
+
+    public static Root root;
     public final static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -19,11 +19,13 @@ public class Main {
         ParseThreadXML parseThreadXML;
         ParseThreadJSON parseThreadJSON;
 
+
 // calling method for user to make a selection what file type he wants to download
 //        and writing it to variable
         int userSelectionDownloadMethod = selectFileTypeForDownload();
+        Manager.downloadFile(userSelectionDownloadMethod);
 
-// starting different threads to parse file according to user selection
+// starting different threads to parse file according to user's selection
         if (userSelectionDownloadMethod == 1) {
             parseThreadXML = new ParseThreadXML(userSelectionDownloadMethod);
             Thread pThread = new Thread(parseThreadXML);
@@ -44,10 +46,6 @@ public class Main {
             }
 
 
-
-            Root root = new Root();
-
-
 //      user selects what type of file to download
 //        int userSelectionDownloadMethod = selectFileTypeForDownload();
 //      call method to download file
@@ -60,6 +58,9 @@ public class Main {
 
 
         }
+
+        selectActionMenu();
+        
     }
 
     /**
@@ -91,6 +92,7 @@ public class Main {
         userMenu();
         int userSelectionOfAction = 0;
 
+
         do {
             while (!input.hasNextInt()) {
                 System.out.println("Enter Integer from 1 to 4, please, make your choice:");
@@ -105,7 +107,8 @@ public class Main {
                     break;
                 }
                 case (2): {
-                    System.out.println("entered 2");
+                    SearchRates searchRates = new SearchRates();
+                    searchRates.searchSmth(root.getCurrency());
                     break;
                 }
                 case (3): {

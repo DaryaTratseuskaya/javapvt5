@@ -1,5 +1,7 @@
 package by.itacademy.task.Task1.domain.methods;
 
+import by.itacademy.task.Task1.domain.entity.Root;
+
 import static by.itacademy.task.Task1.Main.selectFileTypeForDownload;
 
 /**
@@ -7,7 +9,7 @@ import static by.itacademy.task.Task1.Main.selectFileTypeForDownload;
  */
 public class ParseThreadJSON implements Runnable {
     private int userSelectionDownloadMethod;
-
+    Root root;
     public ParseThreadJSON(int parameter) {
         this.userSelectionDownloadMethod = parameter;
     }
@@ -17,7 +19,7 @@ public class ParseThreadJSON implements Runnable {
 
         System.out.println("started json parsing");
         int userSelectionDownloadMethod = this.userSelectionDownloadMethod;
-        Manager.parseJSONMethod(userSelectionDownloadMethod);
+        root = Manager.parseJSONMethod(userSelectionDownloadMethod);
 
     }
 }
