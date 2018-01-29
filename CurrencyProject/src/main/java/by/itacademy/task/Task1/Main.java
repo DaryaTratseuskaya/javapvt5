@@ -1,7 +1,6 @@
 package by.itacademy.task.Task1;
 
 import by.itacademy.task.Task1.domain.entity.Root;
-import by.itacademy.task.Task1.domain.methods.Manager;
 import by.itacademy.task.Task1.domain.methods.ParseThreadJSON;
 import by.itacademy.task.Task1.domain.methods.FullCurrencyName;
 import by.itacademy.task.Task1.domain.methods.ParseThreadXML;
@@ -13,35 +12,42 @@ import java.util.*;
  */
 public class Main {
     public final static Scanner input = new Scanner(System.in);
-    static ParseThreadXML parseThreadXML;
-    static ParseThreadJSON parseThreadJSON;
-
 
     public static void main(String[] args) {
 
-        int userSelectionDownloadMethod = selectFileTypeForDownload();
-//        Manager.downloadFile(userSelectionDownloadMethod);
 
+        ParseThreadXML parseThreadXML;
+        ParseThreadJSON parseThreadJSON;
+
+// calling method for user to make a selection what file type he wants to download
+//        and writing it to variable
+        int userSelectionDownloadMethod = selectFileTypeForDownload();
+
+// starting different threads to parse file according to user selection
         if (userSelectionDownloadMethod == 1) {
-            parseThreadXML = new ParseThreadXML();
+            parseThreadXML = new ParseThreadXML(userSelectionDownloadMethod);
             Thread pThread = new Thread(parseThreadXML);
             pThread.start();
-//            try {
-//                pThread.join();
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
+            try {
+                pThread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         } else if (userSelectionDownloadMethod == 2) {
-            parseThreadJSON = new ParseThreadJSON();
+            parseThreadJSON = new ParseThreadJSON(userSelectionDownloadMethod);
             Thread pThread = new Thread(parseThreadJSON);
             pThread.start();
-//            try {
-//                pThread.join();
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
+            try {
+                pThread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
-//        Root root = new Root();
+
+
+            Root root = new Root();
+
+
 //      user selects what type of file to download
 //        int userSelectionDownloadMethod = selectFileTypeForDownload();
 //      call method to download file

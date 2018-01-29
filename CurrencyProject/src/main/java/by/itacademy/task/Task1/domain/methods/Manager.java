@@ -23,19 +23,6 @@ public class Manager {
         }
     }
 
-//    public static Root parseFile(int userSelectionDownloadMethod) {
-//        Parsing parsing = null;
-//
-//        if (userSelectionDownloadMethod == 1) {
-//
-//            parsing = new ParseXML();
-//        } else if (userSelectionDownloadMethod == 2) {
-//            parsing = new ParseJSON();
-//        }
-//
-//        Root root = parsing.parse("currency");
-//        return root;
-//    }
     public static Root parseXMLMethod(int userSelectionDownloadMethod) {
         Parsing parsing = null;
 
