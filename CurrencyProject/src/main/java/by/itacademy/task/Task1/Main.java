@@ -1,8 +1,10 @@
 package by.itacademy.task.Task1;
 
 import by.itacademy.task.Task1.domain.entity.Root;
+import by.itacademy.task.Task1.domain.methods.Manager;
 import by.itacademy.task.Task1.domain.methods.ParseThreadJSON;
 import by.itacademy.task.Task1.domain.methods.FullCurrencyName;
+import by.itacademy.task.Task1.domain.methods.ParseThreadXML;
 
 import java.util.*;
 
@@ -11,33 +13,35 @@ import java.util.*;
  */
 public class Main {
     public final static Scanner input = new Scanner(System.in);
-    static ParseThreadJSON parseThread;
+    static ParseThreadXML parseThreadXML;
+    static ParseThreadJSON parseThreadJSON;
+
 
     public static void main(String[] args) {
 
         int userSelectionDownloadMethod = selectFileTypeForDownload();
+//        Manager.downloadFile(userSelectionDownloadMethod);
 
         if (userSelectionDownloadMethod == 1) {
-            parseThread = new ParseThreadJSON();
-            Thread pThread = new Thread(parseThread);
+            parseThreadXML = new ParseThreadXML();
+            Thread pThread = new Thread(parseThreadXML);
             pThread.start();
 //            try {
-  //              pThread.join();
+//                pThread.join();
 //            } catch (InterruptedException e) {
 //                e.printStackTrace();
 //            }
-        } else {
-            parseThread = new ParseThreadJSON();
-            Thread pThread = new Thread(parseThread);
+        } else if (userSelectionDownloadMethod == 2) {
+            parseThreadJSON = new ParseThreadJSON();
+            Thread pThread = new Thread(parseThreadJSON);
             pThread.start();
-            try {
-                pThread.join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+//            try {
+//                pThread.join();
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
 
-        Root root = new Root();
+//        Root root = new Root();
 //      user selects what type of file to download
 //        int userSelectionDownloadMethod = selectFileTypeForDownload();
 //      call method to download file
@@ -49,6 +53,7 @@ public class Main {
 //      call method to work with file
 
 
+        }
     }
 
     /**

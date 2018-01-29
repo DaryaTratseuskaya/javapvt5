@@ -8,8 +8,10 @@ import static by.itacademy.task.Task1.Main.selectFileTypeForDownload;
 public class ParseThreadXML implements Runnable{
     @Override
     public void run() {
+
         int userSelectionDownloadMethod = selectFileTypeForDownload();
         Manager.parseXMLMethod(userSelectionDownloadMethod);
+        System.out.println("started xml parsing");
 
     }
 }

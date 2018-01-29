@@ -11,6 +11,6 @@ public class ParseThreadJSON implements Runnable {
 
         int userSelectionDownloadMethod = selectFileTypeForDownload();
         Manager.parseJSONMethod(userSelectionDownloadMethod);
-
+        System.out.println("started json parsing");
     }
 }
