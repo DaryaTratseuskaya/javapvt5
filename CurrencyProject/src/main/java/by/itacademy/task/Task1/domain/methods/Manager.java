@@ -23,49 +23,29 @@ public class Manager {
         }
     }
 
-    public static Root parseFile(int userSelectionDownloadMethod) {
-        Parsing parsing = null;
-
+//    public static Root parseFile(int userSelectionDownloadMethod) {
+//        Parsing parsing = null;
+//
+//        if (userSelectionDownloadMethod == 1) {
+//
+//            parsing = new ParseXML();
+//        } else if (userSelectionDownloadMethod == 2) {
+//            parsing = new ParseJSON();
+//        }
+//
+//        Root root = parsing.parse("currency");
+//        return root;
+//    }
+    public static void parseXMLMethod(int userSelectionDownloadMethod) {
         if (userSelectionDownloadMethod == 1) {
-
-            parsing = new ParseXML();
-        } else if (userSelectionDownloadMethod == 2) {
-            parsing = new ParseJSON();
-        }
-
-        Root root = parsing.parse("currency");
-        return root;
-    }
-
-
-    public static void userSelection(int userSelectionOfAction, Root root) {
-        switch (userSelectionOfAction) {
-            case (1): {
-                System.out.println("entered 1");
-
-                break;
-
-            }
-            case (2): {
-                System.out.println("entered 2");
-                break;
-
-            }
-            case (3): {
-                FullCurrencyName.addFullCurrencyName();
-                break;
-
-            }
-            case (4): {
-                System.out.println("entered 4");
-                break;
-
-
-            }
-
+            Downloader.downloadXML();
         }
     }
-
+    public static void parseJSONMethod(int userSelectionDownloadMethod) {
+        if (userSelectionDownloadMethod == 2) {
+            Downloader.downloadJSON();
+        }
+    }
 
 }
 

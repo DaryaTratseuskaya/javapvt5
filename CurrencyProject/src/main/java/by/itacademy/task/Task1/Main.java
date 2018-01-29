@@ -1,8 +1,8 @@
 package by.itacademy.task.Task1;
 
 import by.itacademy.task.Task1.domain.entity.Root;
+import by.itacademy.task.Task1.domain.methods.ParseThreadJSON;
 import by.itacademy.task.Task1.domain.methods.FullCurrencyName;
-import by.itacademy.task.Task1.domain.methods.Manager;
 
 import java.util.*;
 
@@ -11,24 +11,43 @@ import java.util.*;
  */
 public class Main {
     public final static Scanner input = new Scanner(System.in);
+    static ParseThreadJSON parseThread;
 
     public static void main(String[] args) {
 
+        int userSelectionDownloadMethod = selectFileTypeForDownload();
 
-        boolean checkParse = false;
+        if (userSelectionDownloadMethod == 1) {
+            parseThread = new ParseThreadJSON();
+            Thread pThread = new Thread(parseThread);
+            pThread.start();
+//            try {
+  //              pThread.join();
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+        } else {
+            parseThread = new ParseThreadJSON();
+            Thread pThread = new Thread(parseThread);
+            pThread.start();
+            try {
+                pThread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
         Root root = new Root();
 //      user selects what type of file to download
-        int userSelectionDownloadMethod = selectFileTypeForDownload();
+//        int userSelectionDownloadMethod = selectFileTypeForDownload();
 //      call method to download file
-        Manager.downloadFile(userSelectionDownloadMethod);
+//        Manager.downloadFile(userSelectionDownloadMethod);
 //      call method to parse file
-        root = Manager.parseFile(userSelectionDownloadMethod);
+//        root = Manager.parseFile(userSelectionDownloadMethod);
 //      call user menu to select action with data from the file
-        int userSelectionOfAction = selectActionMenu();
+//        int userSelectionOfAction = selectActionMenu();
 //      call method to work with file
-        Manager.userSelection(userSelectionOfAction, root);
 
-//
 
     }
 
@@ -68,7 +87,7 @@ public class Main {
             }
             userSelectionOfAction = input.nextInt();
 
-            switch (userSelectionOfAction){
+            switch (userSelectionOfAction) {
                 case (1): {
                     System.out.println("entered 1");
 
@@ -86,13 +105,17 @@ public class Main {
                     System.out.println("entered 4");
                     break;
                 }
+                case (0): {
+                    System.out.println("Exit");
+                    break;
+                }
             }
-        } while (userSelectionOfAction!=0);
+        } while (userSelectionOfAction != 0);
 
         return userSelectionOfAction;
     }
 
-    public static void userMenu(){
+    public static void userMenu() {
 
         System.out.println();
         System.out.println("Select action you want to perform: ");
@@ -100,6 +123,7 @@ public class Main {
         System.out.println("2 - Search for Exchange Rates");
         System.out.println("3 - Print the full Currency List");
         System.out.println("4 - Sort by Currency Name");
+        System.out.println("0 - Exit");
         System.out.println("Please, make your choice: ");
 
     }
