@@ -36,15 +36,23 @@ public class Manager {
 //        Root root = parsing.parse("currency");
 //        return root;
 //    }
-    public static void parseXMLMethod(int userSelectionDownloadMethod) {
+    public static Root parseXMLMethod(int userSelectionDownloadMethod) {
+        Parsing parsing = null;
+
         if (userSelectionDownloadMethod == 1) {
-            Downloader.downloadXML();
+            parsing = new ParseXML();
         }
+        Root root = parsing.parse("currency");
+        return root;
     }
-    public static void parseJSONMethod(int userSelectionDownloadMethod) {
+
+    public static Root parseJSONMethod(int userSelectionDownloadMethod) {
+        Parsing parsing = null;
         if (userSelectionDownloadMethod == 2) {
-            Downloader.downloadJSON();
+            parsing = new ParseJSON();
         }
+        Root root = parsing.parse("currency");
+        return root;
     }
 
 }
