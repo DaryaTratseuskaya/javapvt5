@@ -35,9 +35,9 @@ public class ParseXML implements Parsing {
 //
             root.setCurrency(currencyList);
 //
-//            System.out.println("========================================== XML");
-//            System.out.println("root = " + root.toString());
-//            System.out.println("========================================== XML");
+            System.out.println("========================================== XML");
+            System.out.println("root = " + root.toString());
+            System.out.println("========================================== XML");
 
 
         } catch (SAXException | IOException e) {

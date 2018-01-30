@@ -120,6 +120,7 @@ public class Main {
                 case (2): {
                     SearchRates searchRates = new SearchRates();
                     searchRates.searchSmth(root.getCurrency());
+                    userMenu();
                     break;
                 }
                 case (3): {

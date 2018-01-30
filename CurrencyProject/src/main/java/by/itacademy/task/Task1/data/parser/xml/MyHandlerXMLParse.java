@@ -90,7 +90,7 @@ public class MyHandlerXMLParse extends DefaultHandler{
                 root.setBaseCurrencyId(Integer.parseInt(value));
                 break;
 
-            case "root/currency/element/code":
+            case "/root/currency/element/code":
                 currency.setCode(Integer.parseInt(value));
                 break;
 
