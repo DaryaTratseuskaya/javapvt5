@@ -6,6 +6,9 @@ import by.itacademy.task.Task1.data.parser.Parsing;
 import by.itacademy.task.Task1.data.parser.json.ParseJSON;
 import by.itacademy.task.Task1.data.parser.xml.ParseXML;
 import by.itacademy.task.Task1.domain.entity.Root;
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.ParserConfigurationException;
 
 
 /**
@@ -13,6 +16,7 @@ import by.itacademy.task.Task1.domain.entity.Root;
  */
 public class Manager {
 
+    private Root root;
 
     public static void downloadFile(int userSelectionDownloadMethod) {
 
@@ -29,7 +33,14 @@ public class Manager {
         if (userSelectionDownloadMethod == 1) {
             parsing = new ParseXML();
         }
-        Root root = parsing.parse("currency");
+        Root root = null;
+        try {
+            root = parsing.parse("currency");
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        }
         return root;
     }
 
@@ -38,7 +49,14 @@ public class Manager {
         if (userSelectionDownloadMethod == 2) {
             parsing = new ParseJSON();
         }
-        Root root = parsing.parse("currency");
+        Root root = null;
+        try {
+            root = parsing.parse("currency");
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        }
         return root;
     }
 

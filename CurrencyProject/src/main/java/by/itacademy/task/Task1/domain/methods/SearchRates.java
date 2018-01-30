@@ -17,7 +17,7 @@ public class SearchRates extends Search{
         System.out.println("Enter currency code for searching ");
             String currencyCode = input.next();
             for (Currency code : list){
-                if (code.getName()==currencyCode){
+                if (code.getName().equals(currencyCode)){
                     System.out.println("Currency Code " + code.getCode() + " - Currency name: " + code.getName() );
                 }
             }

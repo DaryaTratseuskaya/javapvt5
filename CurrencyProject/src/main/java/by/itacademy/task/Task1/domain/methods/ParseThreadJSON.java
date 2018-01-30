@@ -2,15 +2,22 @@ package by.itacademy.task.Task1.domain.methods;
 
 import by.itacademy.task.Task1.domain.entity.Root;
 
-import static by.itacademy.task.Task1.Main.selectFileTypeForDownload;
+import java.util.concurrent.atomic.AtomicReference;
+
 
 /**
  * Created by daryatratseuskaya on 1/29/18
  */
 public class ParseThreadJSON implements Runnable {
     private int userSelectionDownloadMethod;
-    Root root;
+    private AtomicReference<Root> root = new AtomicReference<>();
+
+    public Root getJSON() {
+        return root.get();
+    }
+
     public ParseThreadJSON(int parameter) {
+
         this.userSelectionDownloadMethod = parameter;
     }
 
@@ -19,7 +26,8 @@ public class ParseThreadJSON implements Runnable {
 
         System.out.println("started json parsing");
         int userSelectionDownloadMethod = this.userSelectionDownloadMethod;
-        root = Manager.parseJSONMethod(userSelectionDownloadMethod);
+
+        root.set(Manager.parseJSONMethod(userSelectionDownloadMethod));
 
     }
 }

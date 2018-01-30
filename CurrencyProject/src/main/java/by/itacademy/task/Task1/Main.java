@@ -1,6 +1,8 @@
 package by.itacademy.task.Task1;
 
+import by.itacademy.task.Task1.domain.entity.Currency;
 import by.itacademy.task.Task1.domain.entity.Root;
+import by.itacademy.task.Task1.domain.entity.Singleton;
 import by.itacademy.task.Task1.domain.methods.*;
 
 import java.util.*;
@@ -11,13 +13,15 @@ import java.util.*;
 public class Main {
 
     public static Root root;
+
     public final static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
 
 
-        ParseThreadXML parseThreadXML;
-        ParseThreadJSON parseThreadJSON;
+
+        ParseThreadXML parseThreadXML = null;
+        ParseThreadJSON parseThreadJSON = null;
 
 
 // calling method for user to make a selection what file type he wants to download
@@ -33,8 +37,10 @@ public class Main {
             try {
                 pThread.join();
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                Thread.currentThread().interrupt();
+                System.err.println("Failed to exec delay");
             }
+            root = parseThreadXML.getXML();
         } else if (userSelectionDownloadMethod == 2) {
             parseThreadJSON = new ParseThreadJSON(userSelectionDownloadMethod);
             Thread pThread = new Thread(parseThreadJSON);
@@ -42,9 +48,12 @@ public class Main {
             try {
                 pThread.join();
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                Thread.currentThread().interrupt();
+                System.err.println("Failed to exec delay");
             }
+            root = parseThreadJSON.getJSON();
 
+        }
 
 //      user selects what type of file to download
 //        int userSelectionDownloadMethod = selectFileTypeForDownload();
@@ -57,16 +66,18 @@ public class Main {
 //      call method to work with file
 
 
-        }
+
 
         selectActionMenu();
-        
+        Singleton.getInstance().setCurrency(root.getCurrency());
+        Singleton.getInstance().getCurrency();
+
     }
 
     /**
      * Select type of file to Download
      *
-     * @return
+     * @return userSelectionDownloadMethod
      */
     public static int selectFileTypeForDownload() {
 
