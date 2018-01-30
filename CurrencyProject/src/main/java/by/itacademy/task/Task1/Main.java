@@ -113,8 +113,9 @@ public class Main {
 
             switch (userSelectionOfAction) {
                 case (1): {
-                    System.out.println("entered 1");
-
+                    ConvertCurrency convertCurrency = new ConvertCurrency();
+                    convertCurrency.convertCurrency(root.getCurrency());
+                    userMenu();
                     break;
                 }
                 case (2): {
@@ -152,6 +153,10 @@ public class Main {
         System.out.println("0 - Exit");
         System.out.println("Please, make your choice: ");
 
+    }
+
+    public static void printNotFound(){
+        System.out.println(" Currency Not found.");
     }
 }
 

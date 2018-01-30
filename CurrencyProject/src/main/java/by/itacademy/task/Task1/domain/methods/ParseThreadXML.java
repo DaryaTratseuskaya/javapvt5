@@ -24,7 +24,7 @@ public class ParseThreadXML implements Runnable {
     @Override
     public void run() {
 
-        System.out.println("started xml parsing");
+        System.out.println("started xml parsing thread");
         int userSelectionDownloadMethod = this.userSelectionDownloadMethod;
 
         root.set(Manager.parseXMLMethod(userSelectionDownloadMethod));

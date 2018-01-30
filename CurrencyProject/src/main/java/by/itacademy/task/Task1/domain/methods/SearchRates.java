@@ -3,6 +3,7 @@ package by.itacademy.task.Task1.domain.methods;
 
 import java.util.InputMismatchException;
 
+import by.itacademy.task.Task1.Main;
 import by.itacademy.task.Task1.domain.entity.Currency;
 
 import java.util.List;
@@ -23,22 +24,20 @@ public class SearchRates extends Search {
     public void searchSmth(List<Currency> list) {
 
         Scanner input = new Scanner(System.in);
-        System.out.println("Enter currency code for searching ");
+        System.out.println("Enter currency name for searching ");
         String currencyName = input.next();
         boolean result = false;
         for (Currency name : list) {
-            if (name.getName().toLowerCase().equals(currencyName)) {
+            if (name.getName().equals(currencyName)) {
                 System.out.println("| Currency name: " + name.getName() + " | Code: " + name.getCode()
                         + " | Rate: " + name.getRate() + " |");
                 result = true;
             }
         } if (!result){
-            printNotFound();
+            Main.printNotFound();
         }
 
     }
 
-    public void printNotFound(){
-        System.out.println(" Currency Not found.");
-    }
+
 }
