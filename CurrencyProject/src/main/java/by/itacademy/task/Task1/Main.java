@@ -139,7 +139,13 @@ public class Main {
                     break;
                 }
                 case (4): {
-                    System.out.println("entered 4");
+                    SortByCurrencyNameComparator sortByCurrencyName = new SortByCurrencyNameComparator();
+                    Collections.sort(root.getCurrency(), sortByCurrencyName);
+                    System.out.println("Sorted list of Currencies: ");
+                    for (Currency currency : root.getCurrency()) {
+                        printCurrencyNames(currency);
+
+                    }
                     break;
                 }
                 case (0): {
@@ -242,7 +248,9 @@ public class Main {
 
         }
         return sourceAmount;
-
+    }
+    public static void printCurrencyNames(Currency currency){
+        System.out.println(currency.getName() + " = " + df.format(currency.getRate()));
     }
 
 
