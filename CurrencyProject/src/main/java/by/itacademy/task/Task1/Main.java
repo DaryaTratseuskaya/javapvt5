@@ -5,6 +5,7 @@ import by.itacademy.task.Task1.domain.entity.Root;
 import by.itacademy.task.Task1.domain.entity.Singleton;
 import by.itacademy.task.Task1.domain.methods.*;
 
+import java.text.DecimalFormat;
 import java.util.*;
 
 /**
@@ -16,20 +17,25 @@ public class Main {
 
     public final static Scanner input = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static DecimalFormat df = new DecimalFormat("#0.####");
 
+    public static void main(String[] args) {
 
 
         ParseThreadXML parseThreadXML = null;
         ParseThreadJSON parseThreadJSON = null;
 
 
-// calling method for user to make a selection what file type he wants to download
-//        and writing it to variable
+        // calling method for user to make a selection what file type he wants to download
+        // and writing it to variable
         int userSelectionDownloadMethod = selectFileTypeForDownload();
-        Manager.downloadFile(userSelectionDownloadMethod);
+        try {
+            Manager.downloadFile(userSelectionDownloadMethod);
+        } catch (RuntimeException e) {
+            System.out.println("[INFO] Program is using earlier downloaded files.");
+        }
 
-// starting different threads to parse file according to user's selection
+        // starting different threads to parse file according to user's selection
         if (userSelectionDownloadMethod == 1) {
             parseThreadXML = new ParseThreadXML(userSelectionDownloadMethod);
             Thread pThread = new Thread(parseThreadXML);
@@ -38,7 +44,7 @@ public class Main {
                 pThread.join();
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
-                System.err.println("Failed to exec delay");
+                System.err.println("[Exception] Failed to exec delay.");
             }
             root = parseThreadXML.getXML();
         } else if (userSelectionDownloadMethod == 2) {
@@ -49,7 +55,7 @@ public class Main {
                 pThread.join();
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
-                System.err.println("Failed to exec delay");
+                System.err.println("[Exception] Failed to exec delay.");
             }
             root = parseThreadJSON.getJSON();
 
@@ -64,8 +70,6 @@ public class Main {
 //      call user menu to select action with data from the file
 //        int userSelectionOfAction = selectActionMenu();
 //      call method to work with file
-
-
 
 
         selectActionMenu();
@@ -93,7 +97,7 @@ public class Main {
         try {
             userSelectionDownloadMethod = input.nextInt();
         } catch (InputMismatchException e) {
-            System.out.println("Incorrect entry " + e.toString() + " Enter Integer");
+            System.out.println("[Exception] Incorrect entry " + e.toString() + " Enter Integer");
         }
         return userSelectionDownloadMethod;
     }
@@ -113,8 +117,14 @@ public class Main {
 
             switch (userSelectionOfAction) {
                 case (1): {
+
+                    String exchangeSourceCur = userInputSourceCur(root.getCurrency());
+                    String exchangeTargetCur = userInputExchangeTargetCur(root.getCurrency());
+                    double exchangeAmount = userInputExchangeAmount();
+
                     ConvertCurrency convertCurrency = new ConvertCurrency();
-                    convertCurrency.convertCurrency(root.getCurrency());
+                    convertCurrency.convertCurrency(root.getCurrency(), exchangeSourceCur, exchangeTargetCur, exchangeAmount);
+
                     userMenu();
                     break;
                 }
@@ -155,8 +165,86 @@ public class Main {
 
     }
 
-    public static void printNotFound(){
-        System.out.println(" Currency Not found.");
+    public static void printNotFound() {
+        System.out.println("Currency Not found.");
     }
+
+    public static void printTargetToTargetCurConvertResult(String targetCurrencyName, double sourceAmount, double targetCurrencyRate,
+                                                           String sourceCurrencyName, double result2) {
+
+        System.out.println("Conversion result: Amount = " + sourceCurrencyName + ", " + sourceAmount + " to "
+                + targetCurrencyName + " rate: " + df.format(targetCurrencyRate) + ", result = " + df.format(result2));
+    }
+
+    public static void printBaseToTargetCurConvertResult(String targetCurrencyName, double sourceAmount, double targetCurrencyRate,
+                                                         String sourceCurrencyName, double result) {
+
+        System.out.println("Conversion result: Amount = " + sourceAmount + ", " + " " + sourceCurrencyName + " to " +
+                targetCurrencyName + " rate: " + df.format(targetCurrencyRate) + ", result = " + df.format(result));
+    }
+
+    public static String userInputSourceCur(List<Currency> list) {
+
+        System.out.println("Enter source currency name [Format: EUR] :  ");
+        String sourceCurrencyName = input.next();
+        boolean searchResultSourceCur = false;
+
+        // searching for entered currency in the Currency list
+        for (Currency name : list) {
+            if (name.getName().equals(sourceCurrencyName)) {
+                System.out.println("[INFO] Source currency – " + name.getName());
+                searchResultSourceCur = true;
+            }
+        }
+        if (!searchResultSourceCur) {
+            Main.printNotFound();
+            System.out.println("Enter source currency name [Format: EUR] :  ");
+            input.next();
+        }
+        return sourceCurrencyName;
+    }
+//        ====================target input
+
+    public static String userInputExchangeTargetCur(List<Currency> list) {
+        System.out.println("Enter target currency name [Format: EUR] :  ");
+        String targetCurrencyName = input.next();
+        boolean searchResultTargetCur = false;
+
+        // searching for entered currency in the Currency list
+        for (Currency name : list) {
+            if (name.getName().equals(targetCurrencyName)) {
+                System.out.println("[INFO] Target currency – " + name.getName());
+                searchResultTargetCur = true;
+            }
+        }
+        if (!searchResultTargetCur) {
+            Main.printNotFound();
+            System.out.println("Enter target currency name [Format: EUR] :  ");
+            input.next();
+        }
+        return targetCurrencyName;
+    }
+
+    //        ================amount input
+    public static double userInputExchangeAmount() {
+
+        double sourceAmount = 0;
+
+        System.out.println("Enter Amount: ");
+        while (!input.hasNextInt()) {
+
+            input.next();
+        }
+        try {
+            sourceAmount = input.nextDouble();
+        } catch (InputMismatchException e) {
+            System.out.println("[Exception] Incorrect entry " + e.toString() + " Enter Integer");
+
+        }
+        return sourceAmount;
+
+    }
+
+
 }
 

@@ -24,7 +24,7 @@ public class ParseThreadJSON implements Runnable {
     @Override
     public void run() {
 
-        System.out.println("started json parsing");
+        System.out.println("[INFO] Started json parsing");
         int userSelectionDownloadMethod = this.userSelectionDownloadMethod;
 
         root.set(Manager.parseJSONMethod(userSelectionDownloadMethod));

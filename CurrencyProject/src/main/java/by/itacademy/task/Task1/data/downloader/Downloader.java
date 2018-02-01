@@ -48,26 +48,26 @@ public class Downloader {
 
 
             } else {
-                System.out.println("Data not found = " + responseCode);
+                System.out.println("[Exception] Data not found = " + responseCode);
             }
 
 
         } catch (Exception e) {
-            System.out.println("Impossible to downloadJSON file" + e);
+            System.out.println("[Exception] Impossible to downloadJSON file" + e);
             throw new RuntimeException(e);
         } finally {
             if (inputStream != null) {
                 try {
                     inputStream.close();
                 } catch (IOException e) {
-                    System.out.println("Impossible to close inputStream");
+                    System.out.println("[Exception] Impossible to close inputStream");
                 }
             }
             if (fileOutputStream != null) {
                 try {
                     fileOutputStream.close();
                 } catch (IOException e) {
-                    System.out.println("Impossible to close fileOutPutStream");
+                    System.out.println("[Exception] Impossible to close fileOutPutStream");
                 }
             }
         }
@@ -106,26 +106,26 @@ public class Downloader {
 
 
             } else {
-                System.out.println("Data not found = " + responseCode);
+                System.out.println("[Exception] Data not found = " + responseCode);
             }
 
 
         } catch (Exception e) {
-            System.out.println("Impossible to downloadXML file" + e);
+            System.out.println("[Exception] Impossible to downloadXML file" + e);
             throw new RuntimeException(e);
         } finally {
             if (inputStream != null) {
                 try {
                     inputStream.close();
                 } catch (IOException e) {
-                    System.out.println("Impossible to close inputStream");
+                    System.out.println("[Exception] Impossible to close inputStream");
                 }
             }
             if (fileOutputStream != null) {
                 try {
                     fileOutputStream.close();
                 } catch (IOException e) {
-                    System.out.println("Impossible to close fileOutPutStream");
+                    System.out.println("[Exception] Impossible to close fileOutPutStream");
                 }
             }
         }
