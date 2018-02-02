@@ -15,6 +15,7 @@ public class Main {
 
     public static Root root;
 
+
     public final static Scanner input = new Scanner(System.in);
 
     public static DecimalFormat df = new DecimalFormat("#0.####");
@@ -122,6 +123,7 @@ public class Main {
                     String exchangeTargetCur = userInputExchangeTargetCur(root.getCurrency());
                     double exchangeAmount = userInputExchangeAmount();
 
+
                     ConvertCurrency convertCurrency = new ConvertCurrency();
                     convertCurrency.convertCurrency(root.getCurrency(), exchangeSourceCur, exchangeTargetCur, exchangeAmount);
 
@@ -188,71 +190,71 @@ public class Main {
         System.out.println("Conversion result: Amount = " + sourceAmount + ", " + " " + sourceCurrencyName + " to " +
                 targetCurrencyName + " rate: " + df.format(targetCurrencyRate) + ", result = " + df.format(result));
     }
+//      ====================source currency input
 
     public static String userInputSourceCur(List<Currency> list) {
 
         System.out.println("Enter source currency name [Format: EUR] :  ");
-        String sourceCurrencyName = input.next();
-        boolean searchResultSourceCur = false;
-
-        // searching for entered currency in the Currency list
-        for (Currency name : list) {
-            if (name.getName().equals(sourceCurrencyName)) {
-                System.out.println("[INFO] Source currency – " + name.getName());
-                searchResultSourceCur = true;
+        do {
+            String sourceCurrencyName = input.next();
+            // searching for entered currency in the Currency list
+            for (Currency name : list) {
+                if (name.getName().equals(sourceCurrencyName)) {
+                    System.out.println("[INFO] Source currency – " + name.getName());
+                    return sourceCurrencyName;
+                }
             }
-        }
-        if (!searchResultSourceCur) {
             Main.printNotFound();
             System.out.println("Enter source currency name [Format: EUR] :  ");
-            input.next();
-        }
-        return sourceCurrencyName;
+        } while (true);
     }
-//        ====================target input
+//        ====================target currency input
 
     public static String userInputExchangeTargetCur(List<Currency> list) {
         System.out.println("Enter target currency name [Format: EUR] :  ");
-        String targetCurrencyName = input.next();
-        boolean searchResultTargetCur = false;
-
-        // searching for entered currency in the Currency list
-        for (Currency name : list) {
-            if (name.getName().equals(targetCurrencyName)) {
-                System.out.println("[INFO] Target currency – " + name.getName());
-                searchResultTargetCur = true;
+        do {
+            String targetCurrencyName = input.next();
+            // searching for entered currency in the Currency list
+            for (Currency name : list) {
+                if (name.getName().equals(targetCurrencyName)) {
+                    System.out.println("[INFO] Target currency – " + name.getName());
+                    return targetCurrencyName;
+                }
             }
-        }
-        if (!searchResultTargetCur) {
             Main.printNotFound();
-            System.out.println("Enter target currency name [Format: EUR] :  ");
-            input.next();
-        }
-        return targetCurrencyName;
+            System.out.println("Enter target name [Format: EUR] :  ");
+        } while (true);
+
     }
 
     //        ================amount input
     public static double userInputExchangeAmount() {
-
         double sourceAmount = 0;
 
         System.out.println("Enter Amount: ");
         while (!input.hasNextInt()) {
-
+            System.out.println("Enter Integer");
             input.next();
         }
         try {
             sourceAmount = input.nextDouble();
         } catch (InputMismatchException e) {
             System.out.println("[Exception] Incorrect entry " + e.toString() + " Enter Integer");
-
         }
         return sourceAmount;
     }
-    public static void printCurrencyNames(Currency currency){
+
+    public static void printCurrencyNames(Currency currency) {
         System.out.println(currency.getName() + " = " + df.format(currency.getRate()));
     }
 
+    public static void printSearchCurrencyResult(List<Currency> currencyList) {
+        for (Currency currency : currencyList) {
+            System.out.println("| Currency name: " + currency.getName() + " | Code: " + currency.getCode()
+                    + " | Rate: " + currency.getRate() + " |");
+        }
+    }
 
 }
+
 

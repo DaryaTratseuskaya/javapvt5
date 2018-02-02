@@ -2,6 +2,7 @@ package by.itacademy.task.Task1.domain.methods;
 
 import by.itacademy.task.Task1.Main;
 import by.itacademy.task.Task1.domain.entity.Currency;
+import by.itacademy.task.Task1.domain.entity.Root;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -33,7 +34,6 @@ public class ConvertCurrency {
         CalculateAmount calculateAmount = new CalculateAmount();
 
         double targetCurrencyRate = calculateAmount.getTargetRate(targetCurrencyName, list);
-//TODO сделать нормальную проверку на базовую валюту
         if (sourceCurrencyName.equals("EUR")) {
             double result = calculateAmount.baseToTargetCurrencyConvertCalc(sourceAmount, targetCurrencyRate);
 

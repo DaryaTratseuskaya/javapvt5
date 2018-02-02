@@ -18,5 +18,4 @@ public class SortByCurrencyNameComparator implements Comparator<Currency> {
     }
 
 
-
 }
