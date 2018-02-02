@@ -24,20 +24,15 @@ public class SearchRates extends Search {
     public void searchSmth(List<Currency> list) {
 
         Scanner input = new Scanner(System.in);
-        System.out.println("Enter currency name for searching: ");
+//        System.out.println("Enter currency name for searching: ");
         String currencyName = input.next();
         boolean result = false;
-//        String curName = " ";
         for (Currency name : list) {
             if (name.getName().equals(currencyName)) {
-//                curName = currencyName;
-                System.out.println("| Currency name: " + name.getName() + " | Code: " + name.getCode()
-                        + " | Rate: " + name.getRate() + " |");
-//                Main.printSearchCurrencyResult(list);
+                Main.printSearchCurrencyResult(list, currencyName);
                 result = true;
             }
         }
-
         if (!result) {
             Main.printNotFound();
         }

@@ -131,6 +131,7 @@ public class Main {
                     break;
                 }
                 case (2): {
+                    System.out.println("Enter currency name for searching: ");
                     SearchRates searchRates = new SearchRates();
                     searchRates.searchSmth(root.getCurrency());
                     userMenu();
@@ -248,10 +249,12 @@ public class Main {
         System.out.println(currency.getName() + " = " + df.format(currency.getRate()));
     }
 
-    public static void printSearchCurrencyResult(List<Currency> currencyList) {
+    public static void printSearchCurrencyResult(List<Currency> currencyList,String curName) {
         for (Currency currency : currencyList) {
-            System.out.println("| Currency name: " + currency.getName() + " | Code: " + currency.getCode()
-                    + " | Rate: " + currency.getRate() + " |");
+            if (currency.getName().equals(curName)) {
+                System.out.println("| Currency name: " + currency.getName() + " | Code: " + currency.getCode()
+                        + " | Rate: " + df.format(currency.getRate()) + " |");
+            }
         }
     }
 
